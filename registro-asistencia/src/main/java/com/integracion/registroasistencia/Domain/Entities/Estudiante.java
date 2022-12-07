@@ -35,10 +35,13 @@ public class Estudiante extends Usuario  {
     @Column(name = "nombre_apoderado", nullable = false)
     private String nombreApoderado;
 
-    @ManyToOne
-    @JoinColumn(name="estudiante_grado", nullable = false,
-            foreignKey = @ForeignKey(name="FK_estudiante_grado"))
-    private Grado grado;
+    @JoinTable(
+            name = "rel_grado_estudiante",
+            joinColumns = @JoinColumn(name = "FK_Estudiante", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="FK_Grado", nullable = false)
+    )
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Grado> grados;
 
     @NotNull
     @OneToMany (mappedBy ="estudiante", cascade ={CascadeType.ALL})

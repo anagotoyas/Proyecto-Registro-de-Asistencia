@@ -9,6 +9,7 @@ import lombok.ToString;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 @Table(name = "usuarios")
 @Getter

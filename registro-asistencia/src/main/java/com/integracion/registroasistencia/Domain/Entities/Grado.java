@@ -29,8 +29,7 @@ public class Grado {
             foreignKey = @ForeignKey(name="FK_grado_year"))
     private Year year;
 
-    @NotNull
-    @OneToMany (mappedBy ="grado", cascade ={CascadeType.ALL})
+    @ManyToMany(mappedBy = "grados")
     private List<Estudiante> estudiantes;
 
     @NotNull
