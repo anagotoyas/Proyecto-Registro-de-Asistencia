@@ -43,9 +43,6 @@ public class RegistroAsistencia {
             foreignKey = @ForeignKey(name="FK_registro_bimestre"))
     private Bimestre bimestre;
 
-
-
-
     @PrePersist
     public void onCreate() {
         fecha = new Date();
