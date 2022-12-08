@@ -1,0 +1,194 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    background-color:#F4F4F4;
+    font-family: 'Jost', sans-serif;
+
+}
+
+.bienvenida{
+    background-color: #E7E7E7;
+    border-radius: 10px;
+    margin: 0 10px 10px 0;
+    padding: 18px;
+    overflow: auto;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.bienvenidaFoto{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+    display: inline;
+    
+}
+
+.menu{
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 10px 10px 0;
+    width: auto;
+    margin-bottom: 1rem;
+
+}
+
+.menu a {
+    display: flex;
+    
+}
+
+.footer{
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px 10px 0 0;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #A8A8A8;
+    margin-bottom: 20px;
+}
+
+#iconcito {
+    color: black;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    padding: 5px;
+    
+}
+
+.asistencia{
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 0 0 10px;
+    padding: 20px;
+}
+
+h1{
+    font-family: 'Jost', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #763991;
+}
+
+h2{
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    display: inline;
+    font-weight: 600;
+    line-height: 50px;
+}
+
+h3{
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    display: inline;
+    letter-spacing: -0.5px;
+    margin-bottom: 0;
+}
+
+h4{
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline;
+    letter-spacing: -0.5px;
+    margin-bottom: 0;
+}
+
+.linea-subtitle {
+    border-top: 4px solid #672a8c;
+    border-radius: 5px;
+    height: 2px;
+    max-width: auto;
+    margin-bottom: 25px;
+    margin-top: 0px;
+}
+
+
+.button2{
+    padding: 20px 10px 20px 20px;
+    line-height: 35px;
+    max-width: auto;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button1{
+    background-color: #672a8c;
+    padding: 20px 10px 20px 20px;
+    border-radius: 0 0 10px 10px;
+    line-height: 35px;
+    max-width: auto;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    
+}
+
+.button2:hover{
+    border-radius: 10px;
+    background-color: #FFB94E;
+    color: white;
+    font-weight: 600;
+    transition: 0.2s;
+    margin-bottom: 20px;
+}
+
+.button2:hover .far{ 
+    color: white !important;
+}
+
+.select-año{
+    border-radius: 10px;
+    border-color: #D0D0D0;
+    border-width: 3px;
+    width: 5rem;
+    padding: 5px;
+    margin: 0 10px 0 10px;
+}
+
+option{
+    border-color: #D0D0D0;
+    border-width: 3px;
+}
+
+#reload {
+    color: black;
+    margin-left: 1rem;
+    font-size: 1rem;
+    padding: 10px;
+    
+    
+}
+
+#reload:hover{
+    background-color: #672a8c;
+    border-radius: 20px;
+    color: white;
+}
+
+.filtros{
+    margin-bottom: 1rem;
+}
+
+th {
+    color: #ABABAB;
+}
+
+th, td {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    
+}

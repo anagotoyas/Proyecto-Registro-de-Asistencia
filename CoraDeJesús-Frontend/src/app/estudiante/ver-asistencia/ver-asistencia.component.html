@@ -1,0 +1,55 @@
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="bienvenida">
+                    <img src="../../../assets/NC2.jpg" class="bienvenidaFoto" alt="Imagen Usuario">
+                    <h3>¡Bienvenide Ana G. Montoya!</h3>
+                </div>
+                <div class="menu">
+                    <a href="/estud/datos" class="button2"><i class="far fa-copy" id="iconcito"></i>Datos Personales</a>
+                    <a href="/estud/asistencia" class="button1"><i class="far fa-calendar-check" id="iconcito" style="color: white;"></i>Registro de Asistencia</a>
+                </div>
+                <div class="footer">
+                    Corazón de Jesús © 2022
+                    Todos los derechos reservados
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="asistencia">
+                    <h1>Asistencia del Estudiante</h1>
+                    <div class="linea-subtitle"></div>
+                    <div class="filtros">
+                        <h2>Año Escolar: </h2>
+                        <select class="select-año">
+                            <option>2020</option>
+                            <option>2021</option>
+                            <option>2022</option>
+                        </select>
+                        <h4>S 4 N° 17</h4>
+                        <a href="/estud/asistencia" ><i class="fas fa-redo-alt" id="reload"></i></a>
+                    </div>
+
+                    <div class="table">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="nombreAsistencia">
+                              <th mat-header-cell *matHeaderCellDef> Asistencia </th>
+                              <td mat-cell *matCellDef="let element"> {{element.nombreAsistencia}} </td>
+                            </ng-container>
+                          
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="fecha">
+                              <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                              <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+                            </ng-container>
+                          
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          </table>                         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

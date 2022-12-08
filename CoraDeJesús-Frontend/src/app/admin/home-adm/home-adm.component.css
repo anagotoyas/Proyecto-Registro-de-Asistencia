@@ -1,0 +1,157 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    background-color:#F4F4F4;
+    font-family: 'Jost', sans-serif;
+}
+
+#iconcito {
+    color: black;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    padding: 5px;
+    
+}
+
+.fila {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+
+.boxie {
+    display: block;
+    align-items: center;
+}
+
+.row {
+    padding: 30px 100px;
+}
+
+.bienvenida{
+    background-color: #E7E7E7;
+    border-radius: 5px;
+    margin: 0 10px 10px 0;
+    padding: 18px;
+    overflow: auto;
+    margin-bottom: 1rem
+}
+
+.cardcita h3 {
+    font-size: 26px;
+    text-align: center;
+}
+
+.contenido {
+    padding: 2rem;
+    text-align: center;
+    align-items: center;
+    line-height: 10px;
+    width: 50%;
+}
+
+.cardcita {
+    display: flex;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25); 
+    border-radius: 3px 0px 0px 3px;
+    text-align: center
+}
+.logazo {
+    font-size: 35px;
+    padding: 2rem;
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    color: white;
+    
+}
+
+p {
+    margin: 3px 0px 0px 0px;
+    font-size: 10px;
+    color: #ABABAB;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.menu{
+    background-color: white;
+    border-radius: 5px;
+    margin: 0 10px 10px 0;
+    width: auto;
+    margin-bottom: 1rem
+}
+
+.menu a {
+    display: flex;
+    
+}
+
+.footer{
+    background-color: white;
+    border-radius: 5px;
+    margin: 10px 10px 0 0;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #A8A8A8;
+
+}
+
+.datos{
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 0 0 10px;
+    padding: 60px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+h3{
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    display: inline;
+    letter-spacing: -0.5px;
+    
+    
+}
+
+.imageB{
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin-top: 3rem;
+}
+
+.button2{
+    padding: 20px 10px 20px 20px;
+    line-height: 35px;
+    max-width: auto;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button2:hover{
+    border-radius: 10px;
+    background-color: #FFB94E;
+    color: white;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.button2:hover .far{ 
+    color: white !important;
+}

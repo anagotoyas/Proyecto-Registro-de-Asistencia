@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+header{
+    background-color:#F4F4F4;
+    padding: 50px 100px;
+    font-family: 'Jost', sans-serif;
+
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.usuario{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.datos{
+    text-align: right;
+    line-height: 0%;
+
+}
+
+h1,h2,h3,h4,p{
+    font-family: 'Jost', sans-serif;
+    
+}
+
+.logo{
+    height: 50px;
+    overflow: hidden;
+    margin-top: -6px;
+}
+
+.user{
+    border-radius: 100%;
+    height: 46px;
+    width: 46px;
+    margin: 0 30px;
+    scale: 1.45;
+}
+
+.logoff{
+    position:relative
+}
+
+.logout{  
+    height: 46px;
+    width: 46px;
+    text-align: center;
+    display: table;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.fas{
+    text-align: center;
+    margin-top: auto;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.logout:hover{
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.25s;
+    opacity: 20%;
+    background-color: rgba(175, 165, 176, 0.638);
+    color: white;
+}
+
+

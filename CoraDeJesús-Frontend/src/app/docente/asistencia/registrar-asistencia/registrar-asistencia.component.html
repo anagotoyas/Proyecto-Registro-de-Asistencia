@@ -1,0 +1,63 @@
+<body>
+    <section>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="menu">
+                    <a href="/docente/datos" class="button2" id="arriba"><i class="far fa-copy" id="iconcito"></i>Datos Personales</a>
+                    <a href="/docente/ver-estud" class="button2" id="medio"><i class="fas fa-address-card" id="iconcito"></i>Lista de Estudiantes</a>
+                    <a href="/docente/asistencia" class="button1" id="abajo"><i class="far fa-calendar-check" id="iconcito" style="color: white;"></i>Registro de Asistencia</a>
+                </div>
+                <div class="footer">
+                    Corazón de Jesús © 2022<br>
+                    Todos los derechos reservados
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="datos">
+                    <h1>Registrar Asistencia<h1 style="color: #767676; display: inline; font-weight: 500;"> / 2° Grado</h1></h1>
+                    <div class="linea-subtitle"></div>
+                    <p style="font-weight: bold; margin-bottom: 2rem; font-size: 18px; display: inline;">Fecha: 
+                      <p style="display: inline; font-weight: 400; ">11 / 05 / 2022</p>
+                    <div class="cajita">
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                        <!--- Note that these columns can be defined in any order.
+                              The actual rendered columns are set as a property on the row definition" -->
+                      
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="position">
+                          <th mat-header-cell *matHeaderCellDef style="width: 30%;"> Nro de Orden </th>
+                          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                        </ng-container>
+                      
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                          <th mat-header-cell *matHeaderCellDef> Estudiante </th>
+                          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef> Estado </th>
+                            <td mat-cell *matCellDef="let element">
+                                <mat-form-field appearance="outline">
+                                    <mat-select style="min-width: 200px;" placeholder="" [(ngModel)]="element.select" name="estado">
+                                      <mat-option *ngFor="let estado of estados" [value]="estado.valor">
+                                        {{estado.valor}}
+                                      </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </td>
+                          </ng-container>
+  
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
+                      <button class="guardar">
+                        Guardar
+                      </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

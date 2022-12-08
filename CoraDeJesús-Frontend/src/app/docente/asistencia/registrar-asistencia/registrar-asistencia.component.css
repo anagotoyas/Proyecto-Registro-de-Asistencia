@@ -1,0 +1,185 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    background-color:#F4F4F4;
+    font-family: 'Jost', sans-serif;
+}
+
+#iconcito {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    padding: 5px;
+    
+}
+
+table {
+    width: 100%;
+    
+}
+
+.cajita {
+    padding: 15px 25px 25px 25px;
+}
+
+.datos{
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 0 0 10px;
+    padding: 20px;
+}
+
+.row {
+    padding: 30px 100px;
+}
+
+.bienvenida{
+    background-color: #E7E7E7;
+    border-radius: 5px;
+    margin: 0 10px 10px 0;
+    padding: 18px;
+    overflow: auto;
+    margin-bottom: 1rem;
+}
+
+.bienvenida h3 {
+    font-size: 18px;
+}
+
+th {
+    color: #ABABAB;
+}
+
+th, td {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    
+}
+
+.bienvenidaFoto{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+    display: inline;
+    
+}
+
+.menu{
+    background-color: white;
+    border-radius: 5px;
+    margin: 0 10px 10px 0;
+    width: auto;
+    margin-bottom: 1rem
+}
+
+.menu a {
+    display: flex;
+    
+}
+
+h1{
+    font-family: 'Jost', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #763991;
+}
+
+.linea-subtitle {
+    border-top: 4px solid #672a8c;
+    border-radius: 5px;
+    height: 2px;
+    max-width: auto;
+    margin-bottom: 25px;
+    margin-top: 0px;
+}
+
+.footer{
+    background-color: white;
+    border-radius: 5px;
+    margin: 10px 10px 0 0;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #A8A8A8;
+
+}
+
+
+h3{
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    display: inline;
+    letter-spacing: -0.5px;
+    
+}
+
+.imageB{
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+  
+}
+
+.button1{
+    background-color: #672a8c;
+    padding: 20px 10px 20px 20px;
+    border-radius: 0 0 10px 10px;
+    line-height: 35px;
+    max-width: auto;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    
+}
+
+.button2{
+    padding: 20px 10px 20px 20px;
+    line-height: 35px;
+    max-width: auto;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button2:hover{
+    border-radius: 10px;
+    background-color: #FFB94E;
+    color: white;
+    font-weight: 600;
+    transition: 0.2s;
+    margin-bottom: 20px;
+
+}
+
+.button2:hover .far{ 
+    color: white !important;
+}
+
+.guardar{
+    margin-left: auto;
+    color: white;
+    background-color: #672a8c;
+    border-radius: 5px;
+    border: none;
+    font-weight: 500;
+    font-size: 20px;
+    padding: 5px 30px;
+    margin-top: 40px;
+    box-shadow: 2px 3px 9px #bebebe;
+    display: flex;
+    justify-content: end;
+}
+
+mat-form-field{
+    margin-top: 30px;
+}
+
