@@ -22,9 +22,8 @@ public class Year {
     @Column(name="year", nullable = false)
     private Integer year;
 
-    @NotNull
-    @OneToMany (mappedBy ="year", cascade ={CascadeType.ALL})
-    private List<Grado> grados;
+    @OneToMany(mappedBy = "year", cascade ={CascadeType.ALL})
+    private List<EstudianteGrado> estidiante_grado;
 
     @NotNull
     @OneToMany (mappedBy ="year", cascade ={CascadeType.ALL})

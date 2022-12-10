@@ -24,13 +24,8 @@ public class Grado {
     @Column(name="nombre_grado", nullable = false)
     private String nombreGrado;
 
-    @ManyToOne
-    @JoinColumn(name="grado_year", nullable = false,
-            foreignKey = @ForeignKey(name="FK_grado_year"))
-    private Year year;
-
-    @ManyToMany(mappedBy = "grados")
-    private List<Estudiante> estudiantes;
+    @OneToMany(mappedBy = "grado", cascade ={CascadeType.ALL})
+    private List<EstudianteGrado> estudiantes;
 
     @NotNull
     @OneToMany (mappedBy ="grado", cascade ={CascadeType.ALL})

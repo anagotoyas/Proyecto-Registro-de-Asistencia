@@ -35,13 +35,8 @@ public class Estudiante extends Usuario  {
     @Column(name = "nombre_apoderado", nullable = false)
     private String nombreApoderado;
 
-    @JoinTable(
-            name = "rel_grado_estudiante",
-            joinColumns = @JoinColumn(name = "FK_Estudiante", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="FK_Grado", nullable = false)
-    )
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Grado> grados;
+    @OneToMany(mappedBy = "estudiante", cascade ={CascadeType.ALL})
+    private List<EstudianteGrado> grados;
 
     @NotNull
     @OneToMany (mappedBy ="estudiante", cascade ={CascadeType.ALL})
