@@ -1,10 +1,13 @@
 package com.integracion.registroasistencia.Domain.Services;
 
 import com.integracion.registroasistencia.Domain.Entities.Estudiante;
+import com.integracion.registroasistencia.Domain.Entities.Grado;
 import com.integracion.registroasistencia.Domain.Repositories.EstudianteRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EstudianteService {
@@ -36,6 +39,24 @@ public class EstudianteService {
 
     public Estudiante obtenerEstudiantePorId(Integer idEstudiante){
         return estudianteRepository.findById(idEstudiante).orElse(new Estudiante());
+    }
+
+    public void agregarEstudianteGrado(Estudiante estudiante, Grado grado) {
+        estudiante.getRegistrogrado().add(grado);
+    }
+
+    public void eliminarEstudianteGrado(Estudiante estudiante, Grado grado) {
+        estudiante.getRegistrogrado().remove(grado);
+
+    }
+
+    public List<Estudiante> obtenerEstudiantesPorGrado(Integer idGrado){
+
+        List<Estudiante> todos = estudianteRepository.findAll();
+        List<Estudiante> porGrado = todos.stream().filter(
+                a -> a.getRegistrogrado().stream().anyMatch(
+                        c->c.getIdGrado().equals(idGrado))).collect(Collectors.toList());
+       return porGrado;
     }
 
 }

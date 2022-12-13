@@ -34,4 +34,8 @@ public class YearService {
     public Year obtenerYearPorIdYear(Integer idYear) {
         return yearRepository.findById(idYear).orElse(new Year());
     }
+
+    public Year obtenerYearPorYear(Integer year) {
+        return yearRepository.findYearByYear(year);
+    }
 }

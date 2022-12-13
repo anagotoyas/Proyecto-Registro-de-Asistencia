@@ -1,0 +1,1170 @@
+{
+	"info": {
+		"_postman_id": "04de6934-0aeb-4223-8698-7fc9ace871dc",
+		"name": "COLEGIO CORAZÓN DE JESUS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17666881"
+	},
+	"item": [
+		{
+			"name": "Rol",
+			"item": [
+				{
+					"name": "Registrar Rol",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreRol\": \"Estudiante\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/roles",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8099/roles/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"roles",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Rol por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8099/roles/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"roles",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Rol",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8099/roles/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Rol",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idRol\": 3,\r\n    \"nombreRol\": \"Docente\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8099/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar usuarios por rol",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8099/roles/usuarios/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"roles",
+								"usuarios",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Docente",
+			"item": [
+				{
+					"name": "Registrar Docente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 14296549,\r\n    \"nombre\": \"Jose\",\r\n    \"apellidoPaterno\": \"Mendoza\",\r\n    \"apellidoMaterno\": \"Chávez\",\r\n    \"sexo\": \"Masculino\",\r\n    \"clave\": \"sistemas\",\r\n    \"rol\":{\r\n        \"idRol\": 2\r\n    },\r\n    \"grado\":{\r\n        \"idGrado\":1\r\n    }\r\n   \r\n    \r\n    \r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tutores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tutores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Docentes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/docentes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"docentes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Docente por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/docentes/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"docentes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Docente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"dni\": \"13296542\",\r\n    \"nombre\": \"Juanita\",\r\n    \"apellidoPaterno\": \"Mendoza\",\r\n    \"apellidoMaterno\": \"Chávez\",\r\n    \"sexo\": \"Femenino\",\r\n    \"clave\": \"sistemas\",\r\n    \"rol\": {\r\n        \"idRol\": 3,\r\n        \"nombreRol\": \"Docente\"\r\n    },\r\n    \"fechaNacimiento\": \"03/11/2003\",\r\n    \"fechaContratacion\": \"03/11/2023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/docentes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"docentes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Docente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/docentes/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"docentes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Iniciar Sesión",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"clave\": \"sistemas\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/usuarios/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Usuarios por Rol",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/rol/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								"rol",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comprobar rol de usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/comprobar/1/id/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								"comprobar",
+								"1",
+								"id",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estudiante",
+			"item": [
+				{
+					"name": "Registrar Estudiante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 17566844,\r\n    \"nombre\": \"Pedro\",\r\n    \"apellidoPaterno\": \"Mendoza\",\r\n    \"apellidoMaterno\": \"Chávez\",\r\n    \"sexo\": \"Masculino\",\r\n    \"clave\": \"sistemas\",\r\n    \"rol\":{\r\n        \"idRol\": 3\r\n    },\r\n    \r\n    \r\n    \"direccion\": \"Calle La Esperanza\",\r\n    \"correo\": \"juainta@go.com\",\r\n    \"telefono\":\"923815812\",\r\n    \"nombreApoderado\":\"Carlos adjsada\",\r\n    \"grado\":{\r\n        \"idGrado\":1\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiantes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Estudiantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiantes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Estudiante por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiantes/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Estudiante",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 5,\r\n    \"dni\": \"13296542\",\r\n    \"nombre\": \"Juanita\",\r\n    \"apellidoPaterno\": \"Mendoza\",\r\n    \"apellidoMaterno\": \"Chávez\",\r\n    \"sexo\": \"Femenino\",\r\n    \"clave\": \"sistemas\",\r\n    \"rol\": {\r\n        \"idRol\": 2,\r\n        \"nombreRol\": \"Estudiante\"\r\n    },\r\n    \"fechaNacimiento\": \"03/11/2003\",\r\n    \"direccion\": \"Calle La Esperanza\",\r\n    \"correo\": \"juainta@go.com\",\r\n    \"telefono\": \"923815812\",\r\n    \"nombreApoderado\": \"Carlos adjsada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiantes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Estudiante",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiantes/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estudiantes por grado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiantes/grado/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes",
+								"grado",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Asignar grado",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiantes/1/grado/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes",
+								"1",
+								"grado",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Administrador",
+			"item": [
+				{
+					"name": "Registrar Administrador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 13296932,\r\n    \"nombre\": \"Juanita\",\r\n    \"apellidoPaterno\": \"Mendoza\",\r\n    \"apellidoMaterno\": \"Chávez\",\r\n    \"sexo\": \"Femenino\",\r\n    \"clave\": \"sistemas\",\r\n    \r\n        \"idRol\": 1\r\n    \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admins",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Administradores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admins",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Administrador por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admins/7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admins",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Administrador",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 7,\r\n    \"dni\": \"13296542\",\r\n    \"nombre\": \"Juanita\",\r\n    \"apellidoPaterno\": \"Mendoza\",\r\n    \"apellidoMaterno\": \"Chávez\",\r\n    \"sexo\": \"Femenino\",\r\n    \"clave\": \"sistemas\",\r\n    \"rol\": {\r\n        \"idRol\": 1,\r\n        \"nombreRol\": \"Administrador\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admins",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Administrador",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admins/7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admins",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RegistroAsistencia",
+			"item": [
+				{
+					"name": "Crear Registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"estado\":{\n        \"idEstado\":1\n    },\n    \"estudiante\":{\n         \"idUsuario\":1\n    },\n    \"bimestre\":{\n        \"idBimestre\":1\n    }\n    \n    \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8099/registro_asistencias",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"registro_asistencias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Registros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8099/registro_asistencias",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"registro_asistencias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar Registro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"idRegistro\": 1,\n        \"estado\": \"Ausente\",\n        \"fecha\": \"12/10/2022\",\n        \"idUsuario\":2\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8096/registros",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"registros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por bimestre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/registro_asistencias/bimestre/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"registro_asistencias",
+								"bimestre",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por grado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/registro_asistencias/grado/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"registro_asistencias",
+								"grado",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por estudiante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/registro_asistencias/estudiante/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"registro_asistencias",
+								"estudiante",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por fecha mal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/registro_asistencias/fecha/2022-12-12",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"registro_asistencias",
+								"fecha",
+								"2022-12-12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por estudiante y bimestre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/registro_asistencias/estudiante/1/bimestre/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"registro_asistencias",
+								"estudiante",
+								"1",
+								"bimestre",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Grado",
+			"item": [
+				{
+					"name": "Crear Grado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreGrado\":\"Primero\",\n    \"year\":{\n        \"idYear\":1\n    }\n    \n    \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8099/grados",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"grados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Grados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8099/grados",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"grados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar Grado",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"idRegistro\": 1,\n        \"estado\": \"Ausente\",\n        \"fecha\": \"12/10/2022\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8097/grados",
+							"host": [
+								"localhost"
+							],
+							"port": "8097",
+							"path": [
+								"grados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Grado por Year",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8097/grados/years/2022",
+							"host": [
+								"localhost"
+							],
+							"port": "8097",
+							"path": [
+								"grados",
+								"years",
+								"2022"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener Estudiantes por Grado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/grados/estudiantes/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"grados",
+								"estudiantes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Year",
+			"item": [
+				{
+					"name": "Crear Year",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"year\":2022\n    \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/years",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"years"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Years",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8098/years",
+							"host": [
+								"localhost"
+							],
+							"port": "8098",
+							"path": [
+								"years"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar Grado",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"idRegistro\": 1,\n        \"estado\": \"Ausente\",\n        \"fecha\": \"12/10/2022\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8097/grados",
+							"host": [
+								"localhost"
+							],
+							"port": "8097",
+							"path": [
+								"grados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get por año",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/years/anio/2022",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"years",
+								"anio",
+								"2022"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bimestre",
+			"item": [
+				{
+					"name": "Crear Bimestre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreBimestre\":2,\n    \"year\":{\n        \"idYear\":1\n    }\n    \n    \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8099/bimestres",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"bimestres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Bimestres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8099/bimestres",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"bimestres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Bimestre po Year",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8099/bimestres/year/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8099",
+							"path": [
+								"bimestres",
+								"year",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar Grado",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"idRegistro\": 1,\n        \"estado\": \"Ausente\",\n        \"fecha\": \"12/10/2022\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8097/grados",
+							"host": [
+								"localhost"
+							],
+							"port": "8097",
+							"path": [
+								"grados"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estado",
+			"item": [
+				{
+					"name": "Crear Estado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreEstado\":\"Ausente\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/estados",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estados"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8099",
+			"type": "string"
+		},
+		{
+			"key": "fecha",
+			"value": "12/12/2022"
+		}
+	]
+}

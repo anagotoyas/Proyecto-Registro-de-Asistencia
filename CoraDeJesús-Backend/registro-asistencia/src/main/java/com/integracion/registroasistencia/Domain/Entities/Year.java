@@ -1,6 +1,8 @@
 package com.integracion.registroasistencia.Domain.Entities;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,10 +24,12 @@ public class Year {
     @Column(name="year", nullable = false)
     private Integer year;
 
-    @OneToMany(mappedBy = "year", cascade ={CascadeType.ALL})
-    private List<EstudianteGrado> estidiante_grado;
 
-    @NotNull
+    @JsonIgnore
     @OneToMany (mappedBy ="year", cascade ={CascadeType.ALL})
     private List<Bimestre> bimestres;
+
+    @JsonIgnore
+    @OneToMany (mappedBy ="year", cascade ={CascadeType.ALL})
+    private List<Grado> grados;
 }

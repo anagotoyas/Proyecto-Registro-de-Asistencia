@@ -3,20 +3,44 @@ package com.integracion.registroasistencia.Application.Controllers;
 import com.integracion.registroasistencia.Application.Dto.RegistroAsistencia.RespuestaListRegistroAsistencia;
 import com.integracion.registroasistencia.Application.Dto.RegistroAsistencia.RespuestaRegistroAsistencia;
 import com.integracion.registroasistencia.Application.Dto.Respuestas.Respuesta;
+import com.integracion.registroasistencia.Domain.Entities.Bimestre;
+import com.integracion.registroasistencia.Domain.Entities.Estudiante;
+import com.integracion.registroasistencia.Domain.Entities.Grado;
 import com.integracion.registroasistencia.Domain.Entities.RegistroAsistencia;
+import com.integracion.registroasistencia.Domain.Repositories.BimestreRepository;
+import com.integracion.registroasistencia.Domain.Repositories.EstudianteRepository;
+import com.integracion.registroasistencia.Domain.Repositories.GradoRepository;
+import com.integracion.registroasistencia.Domain.Repositories.RegistroAsistenciaRepository;
 import com.integracion.registroasistencia.Domain.Services.RegistroAsistenciaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/registro_asistencias")
 public class RegistroAsistenciaController {
 
     private final RegistroAsistenciaService registroAsistenciaService;
+
+    @Autowired
+    private BimestreRepository bimestreRepository;
+
+    @Autowired
+    private EstudianteRepository estudianteRepository;
+
+    @Autowired
+    private GradoRepository gradoRepository;
+
+    @Autowired
+    private RegistroAsistenciaRepository registroAsistenciaRepository;
 
     public RegistroAsistenciaController(RegistroAsistenciaService registroAsistenciaService) {
         this.registroAsistenciaService = registroAsistenciaService;
@@ -39,7 +63,7 @@ public class RegistroAsistenciaController {
 
         } catch (Exception e) {
 
-            respuesta.setMensaje("failed");
+            respuesta.setMensaje("failed"+e);
             respuesta.setSatisfactorio(false);
             respuesta.setCodigo("400");
 
@@ -148,5 +172,195 @@ public class RegistroAsistenciaController {
         }
     }
 
+    @GetMapping("/bimestre/{idBimestre}")
+    public ResponseEntity<RespuestaListRegistroAsistencia> listarRegistroAsistenciaBimestre(@PathVariable Integer idBimestre){
+
+        RespuestaListRegistroAsistencia respuesta = new RespuestaListRegistroAsistencia();
+
+
+        try {
+
+            Bimestre bimN = bimestreRepository.findById(idBimestre).get();
+
+            List<RegistroAsistencia> registroAsistencia = registroAsistenciaService.findAllbyBimestre(bimN);
+
+            respuesta.setMensaje("RegistroAsistencia encontrado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(registroAsistencia);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/estudiante/{idUsuario}")
+    public ResponseEntity<RespuestaListRegistroAsistencia> listarRegistroAsistenciaEstudiante(@PathVariable Integer idUsuario){
+
+        RespuestaListRegistroAsistencia respuesta = new RespuestaListRegistroAsistencia();
+
+
+        try {
+
+            Estudiante esN = estudianteRepository.findById(idUsuario).get();
+
+            List<RegistroAsistencia> registroAsistencia = registroAsistenciaService.findAllByEstudiante(esN);
+
+            respuesta.setMensaje("RegistroAsistencia encontrado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(registroAsistencia);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/estudiante/{idUsuario}/bimestre/{idBimestre}")
+    public ResponseEntity<RespuestaListRegistroAsistencia> listarRegistroAsistenciaEstudianteBim(@PathVariable Integer idUsuario,@PathVariable Integer idBimestre){
+
+        RespuestaListRegistroAsistencia respuesta = new RespuestaListRegistroAsistencia();
+
+
+        try {
+
+            Estudiante esN = estudianteRepository.findById(idUsuario).get();
+            Bimestre bN = bimestreRepository.findById(idBimestre).get();
+            List<RegistroAsistencia> registroAsistencia = registroAsistenciaService.obtenerPorEstudianteBimestre(esN,bN);
+
+            respuesta.setMensaje("RegistroAsistencia encontrado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(registroAsistencia);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/grado/{idGrado}")
+    public ResponseEntity<RespuestaListRegistroAsistencia> listarRegistroPorGrado(@PathVariable Integer idGrado){
+
+        RespuestaListRegistroAsistencia respuesta = new RespuestaListRegistroAsistencia();
+
+
+        try {
+
+            Grado gN = gradoRepository.findById(idGrado).get();
+
+            List<RegistroAsistencia> registroAsistencia = registroAsistenciaService.obtenerPorGrado(gN);
+
+            respuesta.setMensaje("RegistroAsistencia encontrado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(registroAsistencia);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/grado/{idGrado}/fecha/{fecha}")
+    public ResponseEntity<RespuestaListRegistroAsistencia> listarRegistroPorGrado(@PathVariable Integer idGrado, @PathVariable String fecha){
+
+        RespuestaListRegistroAsistencia respuesta = new RespuestaListRegistroAsistencia();
+
+
+        try {
+            Date date1=new SimpleDateFormat("dd-MM-yyyy").parse(fecha);
+
+            Grado gN = gradoRepository.findById(idGrado).get();
+
+            List<RegistroAsistencia> registroAsistencia = registroAsistenciaService.obtenerPorGradoYFecha(gN,date1);
+
+            respuesta.setMensaje("RegistroAsistencia encontrado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(registroAsistencia);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/fecha/{fecha}")
+    public ResponseEntity<RespuestaListRegistroAsistencia> listarRegistroAsistenciaFecha(@PathVariable Date fecha){
+
+        RespuestaListRegistroAsistencia respuesta = new RespuestaListRegistroAsistencia();
+
+
+        try {
+
+
+
+            List<RegistroAsistencia> registroAsistencia = registroAsistenciaService.findAllByFecha(fecha);
+
+            respuesta.setMensaje("RegistroAsistencia encontrado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(registroAsistencia);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
+
+
+
+
+
+
 
 }
+
+
+
+
+
+
+

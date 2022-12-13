@@ -147,4 +147,29 @@ public class YearController {
             return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/anio/{year}")
+    public ResponseEntity<RespuestaYear> obtenerYearPorYear(@PathVariable("year") Integer year) {
+
+        RespuestaYear respuesta = new RespuestaYear();
+
+        try {
+            Year year1 = yearService.obtenerYearPorYear(year);
+
+            respuesta.setMensaje("Year encontrado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(year1);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
 }

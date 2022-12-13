@@ -5,7 +5,11 @@ import com.integracion.registroasistencia.Application.Dto.Estudiante.RespuestaEs
 import com.integracion.registroasistencia.Application.Dto.Estudiante.RespuestaListEstudiante;
 import com.integracion.registroasistencia.Application.Dto.Respuestas.Respuesta;
 import com.integracion.registroasistencia.Domain.Entities.Estudiante;
+import com.integracion.registroasistencia.Domain.Entities.Grado;
+import com.integracion.registroasistencia.Domain.Repositories.EstudianteRepository;
+import com.integracion.registroasistencia.Domain.Repositories.GradoRepository;
 import com.integracion.registroasistencia.Domain.Services.EstudianteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +24,21 @@ public class EstudianteController {
 
     private final EstudianteService estudianteService;
 
+
+    @Autowired
+    private GradoRepository gradoRepository;
+
+    @Autowired
+    private EstudianteRepository estudianteRepository;
+
+
+
     public EstudianteController(EstudianteService estudianteService) {
+
         this.estudianteService = estudianteService;
+
     }
+
 
     @PostMapping
     public ResponseEntity<RespuestaEstudiante> crearEstudiante(@Valid @RequestBody Estudiante estudiante) {
@@ -41,7 +57,7 @@ public class EstudianteController {
 
         } catch (Exception e){
 
-            respuesta.setMensaje("failed");
+            respuesta.setMensaje("failed"+e);
             respuesta.setSatisfactorio(false);
             respuesta.setCodigo("400");
 
@@ -101,6 +117,15 @@ public class EstudianteController {
         }
     }
 
+    @PutMapping("/{idUsuario}/grado/{idGrado}")
+    public Estudiante agregarEstudianteGrado(@PathVariable Integer idUsuario, @PathVariable Integer idGrado) {
+        Grado gradoN = gradoRepository.findById(idGrado).get();
+        Estudiante estudianteN=estudianteRepository.findById(idUsuario).get();
+        estudianteService.agregarEstudianteGrado(estudianteN,gradoN);
+        return estudianteRepository.save(estudianteN);
+
+    }
+
     @GetMapping
     public ResponseEntity<RespuestaListEstudiante> listarEstudiante(){
 
@@ -119,6 +144,33 @@ public class EstudianteController {
         } catch (Exception e){
 
             respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/grado/{idGrado}")
+    public ResponseEntity<RespuestaListEstudiante> listarEstudianteGrado(@PathVariable Integer idGrado){
+
+        RespuestaListEstudiante respuesta = new RespuestaListEstudiante();
+
+        try {
+           // Grado gN = gradoRepository.findById(idGrado).get();
+
+            List<Estudiante> estudiantes1 = estudianteService.obtenerEstudiantesPorGrado(idGrado);
+
+            respuesta.setMensaje("Lista de estudiantes llamada con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(estudiantes1);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e){
+
+            respuesta.setMensaje("failed" +e);
             respuesta.setSatisfactorio(false);
             respuesta.setCodigo("400");
 
@@ -149,6 +201,15 @@ public class EstudianteController {
 
             return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @DeleteMapping("/{idUsuario}/grado/{idGrado}")
+    public Estudiante eliminarEstudianteGrado(@PathVariable Integer idUsuario, @PathVariable Integer idGrado) {
+        Grado gradoN = gradoRepository.findById(idGrado).get();
+        Estudiante estudianteN = estudianteRepository.findById(idUsuario).get();
+        estudianteService.eliminarEstudianteGrado(estudianteN,gradoN);
+        return estudianteRepository.save(estudianteN);
+
     }
 
 

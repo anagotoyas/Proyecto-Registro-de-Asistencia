@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface YearRepository  extends JpaRepository<Year, Integer> {
+
+    Year findYearByYear(Integer year);
 }
