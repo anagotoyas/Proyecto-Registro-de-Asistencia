@@ -1,6 +1,7 @@
 package com.integracion.registroasistencia.Domain.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +26,8 @@ public class Estado implements Serializable {
     @Column(name="nombre_estado", nullable = false)
     private String nombreEstado;
 
-    @NotNull
+
+    @JsonIgnore
     @OneToMany (mappedBy ="estado", cascade ={CascadeType.ALL})
     private List<RegistroAsistencia> registros;
 

@@ -2,13 +2,17 @@ package com.integracion.registroasistencia.Domain.Entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import javax.persistence.*;
 import com.sun.istack.NotNull;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Table(name = "estudiantes")
 @Getter
@@ -35,11 +39,19 @@ public class Estudiante extends Usuario  {
     @Column(name = "nombre_apoderado", nullable = false)
     private String nombreApoderado;
 
-    @OneToMany(mappedBy = "estudiante", cascade ={CascadeType.ALL})
-    private List<EstudianteGrado> grados;
+    @Column(name = "ver")
+    private Boolean ver;
 
-    @NotNull
+
+    @JsonIgnore
     @OneToMany (mappedBy ="estudiante", cascade ={CascadeType.ALL})
     private List<RegistroAsistencia> registros;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToMany
+    @JoinTable(name = "registrogrado", joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_grado"))
+    private Set<Grado> registrogrado = new LinkedHashSet<>();
+
 
 }

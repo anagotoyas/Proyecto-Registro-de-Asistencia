@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 export interface PeriodicElement {
   name: string;
@@ -8,6 +8,8 @@ export interface PeriodicElement {
 interface Estado {
   valor: string;
 }
+
+
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Juanita Mendoza Escobar'},
@@ -27,15 +29,42 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './registrar-asistencia.component.html',
   styleUrls: ['./registrar-asistencia.component.css']
 })
-export class RegistrarAsistenciaComponent {
+
+export class RegistrarAsistenciaComponent implements OnInit {
+  hoy:any;
   displayedColumns: string[] = ['position', 'name', 'select'];
   dataSource = ELEMENT_DATA;
   selectedValue: string;
+
+
+
+  constructor() { }
 
   estados: Estado[] = [
     {valor: 'Asistencia'},
     {valor: 'Inasistencia'},
     {valor: 'Tardanza'},
   ];
+
+
+  ngOnInit(): void {
+    this.obtenerHoy();
+
+  }
+  
+
+  obtenerHoy(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    this.hoy = mm + '/' + dd + '/' + yyyy;
+  }
+
+  listarEstudiantes(){
+    
+  }
+
 
 }

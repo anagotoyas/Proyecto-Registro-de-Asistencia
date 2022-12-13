@@ -1,10 +1,13 @@
 package com.integracion.registroasistencia.Application.Controllers;
 
 
+import com.integracion.registroasistencia.Application.Dto.Estudiante.RespuestaListEstudiante;
 import com.integracion.registroasistencia.Application.Dto.Grado.RespuestaGrado;
 import com.integracion.registroasistencia.Application.Dto.Grado.RespuestaGradoList;
 import com.integracion.registroasistencia.Application.Dto.Respuestas.Respuesta;
+import com.integracion.registroasistencia.Domain.Entities.Estudiante;
 import com.integracion.registroasistencia.Domain.Entities.Grado;
+import com.integracion.registroasistencia.Domain.Entities.RegistroAsistencia;
 import com.integracion.registroasistencia.Domain.Services.GradoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -148,6 +151,33 @@ public class GradoController {
             return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/estudiantes/{idGrado}")
+    public ResponseEntity<RespuestaListEstudiante> obtenerEstudiantesPorGrado(@PathVariable("idGrado") Integer idGrado) {
+
+        RespuestaListEstudiante respuesta = new RespuestaListEstudiante();
+
+        try {
+            List<Estudiante> estudiantes = gradoService.obtenerEstudiantesPorGrado(idGrado);
+
+            respuesta.setMensaje("Lista de estudiantes llamada con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(estudiantes);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400" +e);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
 
 
 }

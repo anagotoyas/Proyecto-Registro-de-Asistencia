@@ -1,6 +1,7 @@
 package com.integracion.registroasistencia.Domain.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -26,7 +27,7 @@ public class Bimestre {
             foreignKey = @ForeignKey(name="FK_bimestre_year"))
     private Year year;
 
-    @NotNull
+    @JsonIgnore
     @OneToMany (mappedBy ="bimestre", cascade ={CascadeType.ALL})
     private List<RegistroAsistencia> registros;
 }

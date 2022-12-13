@@ -23,9 +23,9 @@ public class RegistroAsistencia {
     private Integer idRegistro;
 
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fecha",nullable = false)
+    @Column(name = "fecha")
     private Date fecha;
 
     @ManyToOne
@@ -46,5 +46,6 @@ public class RegistroAsistencia {
     @PrePersist
     public void onCreate() {
         fecha = new Date();
+
     }
 }

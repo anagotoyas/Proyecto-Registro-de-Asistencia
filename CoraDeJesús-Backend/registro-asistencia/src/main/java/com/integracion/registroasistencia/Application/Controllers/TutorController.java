@@ -4,8 +4,14 @@ package com.integracion.registroasistencia.Application.Controllers;
 import com.integracion.registroasistencia.Application.Dto.Respuestas.Respuesta;
 import com.integracion.registroasistencia.Application.Dto.Tutor.RespuestaListTutor;
 import com.integracion.registroasistencia.Application.Dto.Tutor.RespuestaTutor;
+import com.integracion.registroasistencia.Domain.Entities.Estudiante;
+import com.integracion.registroasistencia.Domain.Entities.Grado;
 import com.integracion.registroasistencia.Domain.Entities.Tutor;
+import com.integracion.registroasistencia.Domain.Repositories.EstudianteRepository;
+import com.integracion.registroasistencia.Domain.Repositories.GradoRepository;
+import com.integracion.registroasistencia.Domain.Repositories.TutorRepository;
 import com.integracion.registroasistencia.Domain.Services.TutorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +25,12 @@ public class TutorController {
 
     private final TutorService tutorService;
 
+
+    @Autowired
+    private GradoRepository gradoRepository;
+
+    @Autowired
+    private TutorRepository tutorRepository;
     public TutorController(TutorService tutorService){
         this.tutorService = tutorService;
     }
@@ -135,6 +147,15 @@ public class TutorController {
 
             return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PutMapping("/{idUsuario}/grado/{idGrado}")
+    public Tutor agregarTutorGrado(@PathVariable Integer idUsuario, @PathVariable Integer idGrado) {
+        Grado gradoN = gradoRepository.findById(idGrado).get();
+        Tutor tutorN=tutorRepository.findById(idUsuario).get();
+        tutorService.agregarTutorGrado(tutorN,gradoN);
+        return tutorRepository.save(tutorN);
+
     }
 
 }

@@ -1,13 +1,16 @@
 package com.integracion.registroasistencia.Domain.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import com.sun.istack.NotNull;
 
 import javax.validation.constraints.Size;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -24,12 +27,21 @@ public class Grado {
     @Column(name="nombre_grado", nullable = false)
     private String nombreGrado;
 
-    @OneToMany(mappedBy = "grado", cascade ={CascadeType.ALL})
-    private List<EstudianteGrado> estudiantes;
 
-    @NotNull
-    @OneToMany (mappedBy ="grado", cascade ={CascadeType.ALL})
-    private List<Tutor> tutores;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "registrogrado")
+    private Set<Estudiante> registrogrado = new LinkedHashSet<>();
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "tutor_grado")
+    private Set<Tutor> tutor_grado = new LinkedHashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "id_year", nullable = false,
+            foreignKey = @ForeignKey(name = "FK_id_year"))
+    private Year year;
+
 
 
 

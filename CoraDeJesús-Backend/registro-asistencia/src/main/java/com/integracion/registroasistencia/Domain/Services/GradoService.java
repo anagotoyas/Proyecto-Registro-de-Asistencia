@@ -1,6 +1,8 @@
 package com.integracion.registroasistencia.Domain.Services;
 
+import com.integracion.registroasistencia.Domain.Entities.Estudiante;
 import com.integracion.registroasistencia.Domain.Entities.Grado;
+import com.integracion.registroasistencia.Domain.Entities.RegistroAsistencia;
 import com.integracion.registroasistencia.Domain.Repositories.GradoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +41,10 @@ public class GradoService {
     public Grado obtenerGradoPorIdGrado(Integer idGrado) {
         return gradoRepository.findById(idGrado).orElse(new Grado());
     }
+
+    public List<Estudiante> obtenerEstudiantesPorGrado(Integer idGrado){
+        return gradoRepository.findAllByIdGrado(idGrado);
+    }
+
 
 }
