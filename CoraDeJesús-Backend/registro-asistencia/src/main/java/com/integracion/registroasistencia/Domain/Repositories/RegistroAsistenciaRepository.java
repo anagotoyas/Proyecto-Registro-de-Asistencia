@@ -28,6 +28,9 @@ public interface RegistroAsistenciaRepository extends JpaRepository<RegistroAsis
     List<RegistroAsistencia> findAllByFechaAndAndEstudiante(Date fecha, Estudiante estudiante);
 
 
+    @Query(value = "select *  from get_numero_faltas(:bimestre, :anio)", nativeQuery = true)
+    List<Object> getFaltasBySexto(String bimestre, int anio);
+
 
 
 

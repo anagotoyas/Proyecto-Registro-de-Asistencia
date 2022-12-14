@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AdminRoutingModule } from './admin-routing.module';
 import { HomeAdmComponent } from './home-adm/home-adm.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -10,13 +9,20 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { ReporteAsistenciasComponent } from './reporte-asistencias/reporte-asistencias.component';
+import { ReportefaltasComponent } from './reportefaltas/reportefaltas.component';
+import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {MatButtonModule} from "@angular/material/button";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     HomeAdmComponent,
     LayoutComponent,
     VerAsistenciaComponent,
-    ElegirAsistenciaComponent
+    ElegirAsistenciaComponent,
+    ReporteAsistenciasComponent,
+    ReportefaltasComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +30,10 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     MatTableModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    NgxChartsModule,
+    MatButtonModule,
+    HttpClientModule
   ]
 })
 export class AdminModule { }

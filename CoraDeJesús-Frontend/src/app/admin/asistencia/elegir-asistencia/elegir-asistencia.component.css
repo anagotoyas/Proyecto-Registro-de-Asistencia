@@ -3,7 +3,7 @@ html,body{
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     background-color:#F4F4F4;
     font-family: 'Jost', sans-serif;
 }
@@ -13,7 +13,7 @@ html,body{
     margin-right: 1rem;
     font-size: 1.5rem;
     padding: 5px;
-    
+
 }
 
 .fila {
@@ -33,13 +33,24 @@ html,body{
     display: flex;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    
+
 }
 
 .box {
     display: flex;
     flex-wrap: wrap;
     justify-content:space-between;
+}
+
+.button2:hover{
+  border-radius: 10px;
+  background-color: #FFB94E;
+  width: 100%;
+  color: white;
+  font-weight: 600;
+  transition: 0.2s;
+  margin-bottom: 20px;
+
 }
 
 .row {
@@ -73,7 +84,7 @@ html,body{
     background-color: #CEB8D7;
     margin-bottom: 1.5rem;
     width: 18rem;
-    
+
 }
 .logazo {
     font-size: 32px;
@@ -102,7 +113,7 @@ html,body{
 
 .menu a {
     display: flex;
-    
+
 }
 
 .footer{
@@ -134,7 +145,7 @@ h3{
     display: inline-flex;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    
+
 }
 
 h1{
@@ -172,7 +183,7 @@ h1{
     font-weight: 600;
     text-decoration: none;
     display: inline-block;
-    
+
 }
 
 .button2{

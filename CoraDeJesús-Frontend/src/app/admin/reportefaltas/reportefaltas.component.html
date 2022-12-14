@@ -1,0 +1,72 @@
+<body>
+<section>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="menu">
+        <a href="admin/elegir" class="button2"><i class="fas fa-calendar-check" id="iconcito"></i>Registro de Asistencia</a>
+        <a href="admin/reporteAsistencia" class="button2" id="medio"><i class="fas fa-address-card" id="iconcito"></i>Reporte de asistencia</a>
+        <a href="admin/reporteFaltas" class="button1" id="abajo"><i class="fas fa-address-card" id="iconcito" style="color: white;"></i>Reporte de faltas</a>
+      </div>
+      <div class="footer">
+        Corazón de Jesús © 2022<br>
+        Todos los derechos reservados
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="datos">
+        <h1>Reporte de faltas</h1>
+        <div class="linea-subtitle"></div>
+
+        <div class="row">
+          <div class="col">
+            <form>
+              <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>Selecciona el Grado</mat-label>
+                <mat-select [(ngModel)]="gradoValue" name="food">
+                  <mat-option *ngFor="let grado of grados" [value]="grado.value">
+                    {{grado.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col">
+            <form>
+              <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>Selecciona el bimestre</mat-label>
+                <mat-select [(ngModel)]="bimestreValue" name="food">
+                  <mat-option *ngFor="let bimestre of bimestres" [value]="bimestre.value">
+                    {{bimestre.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col-md-3">
+            <button
+              style="width: 100%; height: 80%"
+              mat-raised-button color="primary"
+              (click)="generarReporte()"
+              [disabled] = "validoGuardar()"
+            >Generar Reporte</button>
+          </div>
+        </div>
+        <div class="box">
+
+
+          <ngx-charts-advanced-pie-chart
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="single"
+            [gradient]="gradient"
+            (select)="onSelect($event)"
+            (activate)="onActivate($event)"
+            (deactivate)="onDeactivate($event)"
+          >
+          </ngx-charts-advanced-pie-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>

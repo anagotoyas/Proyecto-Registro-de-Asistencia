@@ -1,4 +1,4 @@
-package com.integracion.registroasistencia.Config;
+package com.integracion.registroasistencia.Domain.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

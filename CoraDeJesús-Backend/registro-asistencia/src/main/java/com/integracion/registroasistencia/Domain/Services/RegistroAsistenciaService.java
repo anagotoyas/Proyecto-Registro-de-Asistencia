@@ -19,6 +19,10 @@ public class RegistroAsistenciaService {
 
     private final RegistroAsistenciaRepository registroAsistenciaRepository;
 
+    public List<Object> getNumeroFaltas(String bimestre, int anio) {
+        return registroAsistenciaRepository.getFaltasBySexto(bimestre, anio);
+    }
+
 
     public RegistroAsistenciaService(RegistroAsistenciaRepository registroAsistenciaRepository) {
         this.registroAsistenciaRepository = registroAsistenciaRepository;
