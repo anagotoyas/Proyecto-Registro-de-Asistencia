@@ -25,7 +25,7 @@ export class DocenteService {
   editResena(resena: Resena) {
     return this.http.put(`${this.apiBase}/resenas`,resena );
   }
-  
+
   getResenaPorId(id: number){
     return this.http.get<Resena>(`${this.apiBase}/resenas/${id}`)
   }

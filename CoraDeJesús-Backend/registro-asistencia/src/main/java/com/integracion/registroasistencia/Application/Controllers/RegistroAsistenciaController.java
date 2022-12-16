@@ -19,10 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping("/registro_asistencias")
@@ -71,6 +68,7 @@ public class RegistroAsistenciaController {
         }
     }
 
+
     @PutMapping
     public ResponseEntity<RespuestaRegistroAsistencia> modificarRegistroAsistencia(@Valid @RequestBody RegistroAsistencia registroAsistencia) {
 
@@ -111,6 +109,31 @@ public class RegistroAsistenciaController {
             respuesta.setCodigo("200");
 
             return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+    @GetMapping("faltas/{bimestre}/{anio}")
+    public ResponseEntity<Object> getFaltasBySexo(@PathVariable("bimestre") String bimestre, @PathVariable("anio") Integer anio) {
+
+        RespuestaListRegistroAsistencia respuesta = new RespuestaListRegistroAsistencia();
+
+        try {
+            Object registroAsistencias = registroAsistenciaService.getNumeroFaltas(bimestre, anio);
+
+            respuesta.setMensaje("Listado de Registro Asistencias exitoso.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+
+            return new ResponseEntity<>(registroAsistencias, HttpStatus.OK);
 
         } catch (Exception e) {
 

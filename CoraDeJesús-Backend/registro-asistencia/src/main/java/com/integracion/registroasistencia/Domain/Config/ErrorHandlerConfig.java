@@ -1,4 +1,4 @@
-package com.integracion.registroasistencia.Config;
+package com.integracion.registroasistencia.Domain.Config;
 
 import com.integracion.registroasistencia.Exception.GeneralServiceException;
 import com.integracion.registroasistencia.Exception.IncorrectResourceRequestException;
