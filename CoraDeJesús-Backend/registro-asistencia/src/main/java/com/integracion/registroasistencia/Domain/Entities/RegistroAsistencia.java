@@ -9,6 +9,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import com.sun.istack.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 @Entity
@@ -22,9 +24,9 @@ public class RegistroAsistencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRegistro;
 
-
-    @JsonFormat(pattern = "dd-MM-yyyy")
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "America/Lima")
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Temporal(TemporalType.DATE)
     @Column(name = "fecha")
     private Date fecha;
 

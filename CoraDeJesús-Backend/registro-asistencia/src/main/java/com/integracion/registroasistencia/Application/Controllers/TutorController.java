@@ -152,13 +152,11 @@ public class TutorController {
         }
     }
 
-    @GetMapping("/correo/{idEstudiante}")
-    public  ResponseEntity<Respuesta> enviarCorreo(@PathVariable("idEstudiante")Integer idEstudiante,@RequestBody RegistroAsistencia asistencias){
+    @GetMapping("/correo")
+    public  ResponseEntity<Respuesta> enviarCorreo(@RequestBody RegistroAsistencia asistencias){
         Respuesta respuesta = new Respuesta();
         try{
-            System.out.println(idEstudiante);
-            System.out.println(asistencias);
-            correoService.Menzaje_assitencia(idEstudiante,asistencias);
+            correoService.Menzaje_assitencia(asistencias);
 
             respuesta.setMensaje("Correo enviado con exito");
             respuesta.setSatisfactorio(true);
