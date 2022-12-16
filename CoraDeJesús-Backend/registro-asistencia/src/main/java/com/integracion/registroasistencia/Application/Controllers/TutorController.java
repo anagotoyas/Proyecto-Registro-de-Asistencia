@@ -6,11 +6,14 @@ import com.integracion.registroasistencia.Application.Dto.Tutor.RespuestaListTut
 import com.integracion.registroasistencia.Application.Dto.Tutor.RespuestaTutor;
 import com.integracion.registroasistencia.Domain.Entities.Estudiante;
 import com.integracion.registroasistencia.Domain.Entities.Grado;
+import com.integracion.registroasistencia.Domain.Entities.RegistroAsistencia;
 import com.integracion.registroasistencia.Domain.Entities.Tutor;
 import com.integracion.registroasistencia.Domain.Repositories.EstudianteRepository;
 import com.integracion.registroasistencia.Domain.Repositories.GradoRepository;
 import com.integracion.registroasistencia.Domain.Repositories.TutorRepository;
+import com.integracion.registroasistencia.Domain.Services.CorreoService;
 import com.integracion.registroasistencia.Domain.Services.TutorService;
+import com.integracion.registroasistencia.Utils.WrapperResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +28,16 @@ public class TutorController {
 
     private final TutorService tutorService;
 
+    private final CorreoService correoService;
 
     @Autowired
     private GradoRepository gradoRepository;
 
     @Autowired
     private TutorRepository tutorRepository;
-    public TutorController(TutorService tutorService){
+    public TutorController(TutorService tutorService, CorreoService correoService){
         this.tutorService = tutorService;
+        this.correoService= correoService;
     }
 
     @PostMapping
@@ -140,14 +145,34 @@ public class TutorController {
 
             return new ResponseEntity<>(respuesta, HttpStatus.OK);
         } catch (Exception e){
-
             respuesta.setMensaje("failed");
             respuesta.setSatisfactorio(false);
             respuesta.setCodigo("400");
-
             return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/correo/{idEstudiante}")
+    public  ResponseEntity<Respuesta> enviarCorreo(@PathVariable("idEstudiante")Integer idEstudiante,@RequestBody RegistroAsistencia asistencias){
+        Respuesta respuesta = new Respuesta();
+        try{
+            System.out.println(idEstudiante);
+            System.out.println(asistencias);
+            correoService.Menzaje_assitencia(idEstudiante,asistencias);
+
+            respuesta.setMensaje("Correo enviado con exito");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+        }
+        catch (Exception e){
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
     @PutMapping("/{idUsuario}/grado/{idGrado}")
     public Tutor agregarTutorGrado(@PathVariable Integer idUsuario, @PathVariable Integer idGrado) {
