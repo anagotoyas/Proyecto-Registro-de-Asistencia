@@ -12,14 +12,16 @@
                 <p>Ingrese correctamente sus credenciales.</p>
             </div>
             <div class="form-group">
-                <input placeholder="Ingrese su ID" type="text" class="form-control" id="u-id">
+                <input placeholder="Ingrese su ID" type="number" class="form-control" id="u-id" [(ngModel)]="usuario.idUsuario">
             </div>
             <div class="form-group">
-                <input placeholder="Ingrese su contraseña" type="text" class="form-control" id="password">
+                <input placeholder="Ingrese su contraseña" type="password" class="form-control" id="password" [(ngModel)]="usuario.clave">
             </div>
             <div class="footer-form">
                 <a href="#">He olvidado mi contraseña.</a>
-                <button>Entrar</button>
+                <button (click)="logIn()">
+                    Entrar
+                </button>
             </div>
         </div>
         <div class="col-md-8" style=" text-align: right;">
