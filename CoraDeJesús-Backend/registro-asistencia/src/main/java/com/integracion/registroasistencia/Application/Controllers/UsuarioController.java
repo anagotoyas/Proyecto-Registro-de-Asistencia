@@ -31,9 +31,7 @@ public class UsuarioController {
 
         try {
             Integer idUsuario= user.getIdUsuario();
-            System.out.println(idUsuario);
             String clave= user.getClave();
-            System.out.println(clave);
             Usuario userObj=null;
             if (idUsuario !=null && clave!= null){
                 userObj=usuarioService.fetchUsuarioPorIdYClave(idUsuario,clave);
