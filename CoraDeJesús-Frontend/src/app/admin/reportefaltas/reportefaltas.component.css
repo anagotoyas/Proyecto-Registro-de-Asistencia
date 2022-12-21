@@ -53,6 +53,10 @@ html,body{
 
 }
 
+.button2:hover .fas{
+  color: white !important;
+}
+
 .row {
   padding: 30px 100px;
 }

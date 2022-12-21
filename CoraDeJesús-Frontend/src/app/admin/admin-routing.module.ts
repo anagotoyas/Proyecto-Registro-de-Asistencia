@@ -23,7 +23,7 @@ const routes: Routes = [{
       component: ElegirAsistenciaComponent
     },
     {
-      path: 'elegir/asistencia',
+      path: ':id/asistencia',
       component: VerAsistenciaComponent,
     },
     {
