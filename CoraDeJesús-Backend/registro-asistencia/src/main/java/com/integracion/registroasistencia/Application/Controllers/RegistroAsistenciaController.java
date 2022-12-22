@@ -370,6 +370,33 @@ public class RegistroAsistenciaController {
         }
     }
 
+    @GetMapping("/incidencia/{idGrado}")
+    public ResponseEntity<RespuestaListRegistroAsistencia> listarIncidenciasPorGrado(@PathVariable Integer idGrado){
+
+        RespuestaListRegistroAsistencia respuesta = new RespuestaListRegistroAsistencia();
+
+        try {
+
+            Grado gN = gradoRepository.findById(idGrado).get();
+
+            List<RegistroAsistencia> registroAsistencia = registroAsistenciaService.obtenerIncidenciasPorGrado(gN);
+
+            respuesta.setMensaje("Incidencias encontradas con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(registroAsistencia);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
 
 
 

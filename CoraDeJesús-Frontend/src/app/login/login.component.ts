@@ -26,9 +26,7 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.usuario).subscribe(
         (res:any)=>{
           localStorage.setItem('userSesion',JSON.stringify(res.dato))
-          console.log(res)
           this.id = res.dato.idUsuario;
-          console.log(this.id);
           sessionStorage.setItem('idUsuario', this.id)
           
           if(res.dato.rol.idRol==1){

@@ -6,12 +6,17 @@ import com.integracion.registroasistencia.Application.Dto.Estudiante.RespuestaLi
 import com.integracion.registroasistencia.Application.Dto.Respuestas.Respuesta;
 import com.integracion.registroasistencia.Domain.Entities.Estudiante;
 import com.integracion.registroasistencia.Domain.Entities.Grado;
+import com.integracion.registroasistencia.Domain.Entities.RegistroAsistencia;
 import com.integracion.registroasistencia.Domain.Repositories.EstudianteRepository;
 import com.integracion.registroasistencia.Domain.Repositories.GradoRepository;
+import com.integracion.registroasistencia.Domain.Repositories.RegistroAsistenciaRepository;
 import com.integracion.registroasistencia.Domain.Services.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -31,7 +36,14 @@ public class EstudianteController {
     @Autowired
     private EstudianteRepository estudianteRepository;
 
+    @Autowired
+    private JavaMailSender mailSender;
 
+    @Autowired
+    private RegistroAsistenciaRepository registroAsistenciaRepository;
+
+
+    @Value("${spring.mail.username}") private String sender;
 
     public EstudianteController(EstudianteService estudianteService) {
 
@@ -212,7 +224,43 @@ public class EstudianteController {
 
     }
 
+    @PostMapping("/notificar/{idRegistroAsistencia}/{idEstudiante}")
+    public String enviarCorreo(@PathVariable Integer idRegistroAsistencia, @PathVariable Integer idEstudiante) {
+        try {
+            RegistroAsistencia registroAsistencia = registroAsistenciaRepository.findById(idRegistroAsistencia).get();
+            Estudiante estudianteN = estudianteRepository.findById(idEstudiante).get();
+            SimpleMailMessage email = new SimpleMailMessage();
 
+            String content;
+            String titulo;
+
+            if (registroAsistencia.getEstado().getIdEstado().equals(2)){
+                content="ha llegado tarde a clase";
+                titulo = "TARDANZA";
+            }
+            else {
+                content="ha faltado a la clase";
+                titulo = "FALTA";
+            }
+
+            String nombreCompleto=estudianteN.getNombre() +" "+estudianteN.getApellidoPaterno()+" "+estudianteN.getApellidoPaterno();
+
+
+            email.setFrom(sender);
+            email.setTo("criverac6@upao.edu.pe");
+            email.setSubject(titulo);
+            email.setText("Sr(a) Apoderado(a) " + estudianteN.getNombreApoderado() +
+                    "\nSe le comunica que su menor hijo "+nombreCompleto +" "+content + " de la fecha: "+ registroAsistencia.getFecha());
+            mailSender.send(email);
+
+            return "funciona xfa";
+        }
+        catch (Exception e){
+            return "Error" + e.getMessage();
+        }
+
+
+    }
 
 
 

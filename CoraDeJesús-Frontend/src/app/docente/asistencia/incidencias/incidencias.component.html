@@ -1,0 +1,53 @@
+<body>
+    <section>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="menu">
+                    <a href="/docente/datos" class="button2" id="arriba"><i class="far fa-copy" id="iconcito"></i>Datos Personales</a>
+                    <a href="/docente/ver-estud" class="button2" id="medio"><i class="fas fa-address-card" id="iconcito"></i>Lista de Estudiantes</a>
+                    <a href="/docente/incidencias" class="button1"><i class="fas fa-exclamation-triangle" id="iconcito" style="color: white;"></i>Incidencias</a>
+                </div>
+                <div class="footer">
+                    Corazón de Jesús © 2022<br>
+                    Todos los derechos reservados
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="datos">
+                    <h1>Incidencias<h1 style="color: #767676; display: inline; font-weight: 500;"> / {{ this.nombre }}</h1></h1>
+                    <div class="linea-subtitle"></div>
+                      <p style="display: inline; font-weight: 400; "></p>
+                    <div class="cajita">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                          
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="id">
+                              <th mat-header-cell *matHeaderCellDef style="width: 30%; text-align: center;"> Nro de Orden </th>
+                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.estudiante.idUsuario}} </td>
+                            </ng-container>
+                          
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="nombre">
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Estudiante </th>
+                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.estudiante.nombre}} {{element.estudiante.apellidoPaterno}} {{element.estudiante.apellidoMaterno}}</td>
+                            </ng-container>
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="incidencia">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Incidencia </th>
+                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.estado.nombreEstado}}</td>
+                              </ng-container>
+    
+                            <ng-container matColumnDef="boton">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Notificar </th>
+                                <td mat-cell *matCellDef="let element" style="height: 60px; align-items:center;
+                                justify-content:center;" (click)="enviarCorreo(element.idRegistro, element.estudiante.idUsuario)"> <button class="guardar" (click)="showModal()"><i class="far fa-envelope" style="color: white;"></i></button> </td>
+                              </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

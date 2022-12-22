@@ -5,7 +5,7 @@
                 <div class="menu">
                     <a href="/docente/datos" class="button1"><i class="far fa-copy" id="iconcito" style="color: white;"></i>Datos Personales</a>
                     <a href="/docente/ver-estud" class="button2"><i class="far fa-address-card" id="iconcito"></i>Lista de Estudiantes</a>
-                    <a href="/docente/asistencia" class="button2"><i class="far fa-calendar-check" id="iconcito"></i>Registro de Asistencia</a>
+                    <a href="/docente/incidencias" class="button2"><i class="fas fa-exclamation-triangle" id="iconcito"></i>Incidencias</a>
                 </div>
                 <div class="footer">
                     Corazón de Jesús © 2022<br>
@@ -18,21 +18,20 @@
                     <div class="linea-subtitle"></div>
                     <div class="row">
                         <div class="col-md-3 imagen">
-                            <img src="../../../assets/anamendoza.png" alt="Foto de Estudiante" class="foto-estudiante">
+                            <img src="../../../assets/docente_img.png" alt="Foto de Docente" class="foto-estudiante">
                         </div>
                         <div class="col-md-9 datazos">
                             <div class="row">
                                 <div class="col-md-6 col1">
-                                    <h2>Apellido Paterno: </h2>Suárez<br>
-                                    <h2>Apellido Materno: </h2>Montoya<br>
-                                    <h2>Nombres: </h2>Juana<br>
-                                    <h2>Sexo: </h2>Femenino<br>
+                                    <h2>Apellido Paterno: </h2>{{ tutor.apellidoPaterno }}<br>
+                                    <h2>Apellido Materno: </h2>{{ tutor.apellidoMaterno }}<br>
+                                    <h2>Nombres: </h2>{{ tutor.nombre }}<br>
+                                    <h2>Sexo: </h2>{{ tutor.sexo }}<br>
                                 </div>
                                 <div class="col-md-6 col2">
-                                    <h2>Fecha de Nacimiento: </h2>20/23/2002<br>
+                                    <h2>Fecha de Nacimiento: </h2>20/23/1972<br>
                                     <h2>Fecha de Contratación: </h2>20/03/2022<br>
-                                    <h2>D.N.I.: </h2>13129540<br>
-                                    <h2>Correo: </h2>avemaria@gmail.com      
+                                    <h2>D.N.I.: </h2>{{ tutor.dni }}<br>  
                                 </div>
                             </div>
                         </div>
