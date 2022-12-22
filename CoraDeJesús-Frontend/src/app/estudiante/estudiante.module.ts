@@ -7,6 +7,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { VerAsistenciaComponent } from './ver-asistencia/ver-asistencia.component';
 import { VerDatosComponent } from './ver-datos/ver-datos.component';
 import { MatTableModule } from '@angular/material/table';
+import { ElegirAsistenciaComponent } from './elegir-asistencia/elegir-asistencia.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MatTableModule } from '@angular/material/table';
     HomeEstComponent,
     LayoutComponent,
     VerAsistenciaComponent,
-    VerDatosComponent
+    VerDatosComponent,
+    ElegirAsistenciaComponent
   ],
   imports: [
     CommonModule,

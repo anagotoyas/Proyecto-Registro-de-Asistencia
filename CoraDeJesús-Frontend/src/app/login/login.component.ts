@@ -11,6 +11,7 @@ import { Login } from './shared/Usuario.model';
 export class LoginComponent implements OnInit {
 
   usuario=new Login();
+  id: any;
   msg:string="" //pueden usarlo paga un mensaje de error
 
   constructor(
@@ -25,6 +26,11 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.usuario).subscribe(
         (res:any)=>{
           localStorage.setItem('userSesion',JSON.stringify(res.dato))
+          console.log(res)
+          this.id = res.dato.idUsuario;
+          console.log(this.id);
+          sessionStorage.setItem('idUsuario', this.id)
+          
           if(res.dato.rol.idRol==1){
             this.router.navigateByUrl('estud')
           }

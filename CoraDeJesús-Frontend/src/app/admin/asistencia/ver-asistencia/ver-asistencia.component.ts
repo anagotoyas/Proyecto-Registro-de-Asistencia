@@ -14,7 +14,6 @@ import { RegistroasistenciaService } from '../../shared/registroasistencia.servi
 
 export class VerAsistenciaComponent implements OnInit{
 
-  megadate: Date = new Date('12/13/2022');
   displayedColumns: string[] = ['position', 'name', 'status', 'date'];
   dataSource = new MatTableDataSource<RegistroAsistencia>();
 
@@ -46,10 +45,6 @@ export class VerAsistenciaComponent implements OnInit{
     
     this.registroAsistenciaService.getRegistrosByGrado(params['id']).subscribe((data:any) => {
       this.dataSource = new MatTableDataSource(data["dato"]);
-      console.log(this.dataSource.data);
-      
-      //console.log(Number(sessionStorage.getItem('idUsuario')));
-      //this.estado=data['body'].estadoPedido.nombreEstado;
     })
   }
   

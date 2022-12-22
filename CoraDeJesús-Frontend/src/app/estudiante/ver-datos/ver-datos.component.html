@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="bienvenida">
-                    <img src="../../../assets/NC2.jpg" class="bienvenidaFoto" alt="Imagen Usuario">
-                    <h3>¡Bienvenide Ana G. Montoya!</h3>
+                    <img src="../../../assets/saludo.jpg" class="bienvenidaFoto" alt="Imagen Usuario">
+                    <h3>¡Bienvenide {{nombres}}!</h3>
                 </div>
                 <div class="menu">
                     <a href="/estud/datos" class="button1"><i class="far fa-copy" id="iconcito" style="color: white;"></i>Datos Personales</a>
@@ -26,17 +26,17 @@
                         <div class="col-md-9 datazos">
                             <div class="row">
                                 <div class="col-md-6 col1">
-                                    <h2>Apellido Paterno: </h2>G.<br>
-                                    <h2>Apellido Materno: </h2>Montoya<br>
-                                    <h2>Nombres: </h2>Anita F.<br>
-                                    <h2>Sexo: </h2>Femenino<br>
-                                    <h2>D.N.I.: </h2>13129540      
+                                    <h2>Apellido Paterno: </h2>{{estudiante.apellidoPaterno}}<br>
+                                    <h2>Apellido Materno: </h2>{{estudiante.apellidoMaterno}}<br>
+                                    <h2>Nombres: </h2>{{estudiante.nombre}}<br>
+                                    <h2>Sexo: </h2>{{estudiante.sexo}}<br>
+                                    <h2>D.N.I.: </h2>{{estudiante.dni}}    
                                 </div>
                                 <div class="col-md-6 col2">
                                     <h2>Fecha de Nacimiento: </h2>20/23/2002<br>
-                                    <h2>Teléfono: </h2>131543124<br>
-                                    <h2>Correo: </h2>anix@gmail.com<br>
-                                    <h2>Dirección: </h2>Calle La Esperanza de Jesucristo
+                                    <h2>Teléfono: </h2>{{estudiante.telefono}}<br>
+                                    <h2>Correo: </h2>{{estudiante.correo}}<br>
+                                    <h2>Dirección: </h2>{{estudiante.direccion}}
                                 </div>
                             </div>
                         </div>

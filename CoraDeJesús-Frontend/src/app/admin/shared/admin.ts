@@ -1,5 +1,5 @@
-
-export class Estudiante {
+export class Admin{
+    
     "idUsuario": number;
     "dni": string;
     "nombre": string;
@@ -8,9 +8,5 @@ export class Estudiante {
     "sexo": string;
     "clave": string;
     "rol": Object;
-    "direccion": string;
-    "correo": string;
-    "telefono": string;
-    "nombreApoderado": string;
-    "ver": boolean
+
 }
