@@ -1,58 +1,80 @@
-import { Component } from '@angular/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  status: string;
-}
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Juanita Mendoza Escobar', status: 'Asistencia'},
-  {position: 2, name: 'Laura Zapata Chavez', status: 'Asistencia'},
-  {position: 3, name: 'Jairo Sanchez Núñez', status: 'Asistencia'},
-  {position: 4, name: 'Taylor Alison Swift', status: 'Asistencia'},
-  {position: 5, name: 'Abril Ramona Labin', status: 'Asistencia'},
-  {position: 6, name: 'Elizabeth Grant Rey', status: 'Tardanza'},
-  {position: 7, name: 'Joaquín Espinoza Vargas', status: 'Asistencia'},
-  {position: 8, name: 'Piero Ramírez Farfán', status: 'Asistencia'},
-  {position: 9, name: 'Jack Taehyung Kim', status: 'Falta'},
-  {position: 10, name: 'Carly Rae Jepsen Perez', status: 'Asistencia'},
-];
+import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
+import { RegistroAsistencia } from '../../shared/registroasistencia';
+import { RegistroasistenciaService } from '../../shared/registroasistencia.service';
 
 @Component({
   selector: 'app-ver-asistencia',
   templateUrl: './ver-asistencia.component.html',
   styleUrls: ['./ver-asistencia.component.css']
 })
-export class VerAsistenciaComponent {
 
-  selected: any;
+export class VerAsistenciaComponent implements OnInit{
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  displayedColumns: string[] = ['position', 'name', 'status', 'date'];
+  dataSource = new MatTableDataSource<RegistroAsistencia>();
 
-  displayedColumns: string[] = ['position', 'name', 'status'];
-  dataSource = ELEMENT_DATA;
+  params = this.activatedRoute.snapshot.params;
+  grado= this.params['id'];
 
-  ELEMENT_DATA: PeriodicElement[] = [
-    {position: 1, name: 'Juanita Mendoza Escobar', status: 'Asistencia'},
-    {position: 2, name: 'Laura Zapata Chavez', status: 'Asistencia'},
-    {position: 3, name: 'Jairo Sanchez Núñez', status: 'Asistencia'},
-    {position: 4, name: 'Taylor Alison Swift', status: 'Asistencia'},
-    {position: 5, name: 'Abril Ramona Labin', status: 'Asistencia'},
-    {position: 6, name: 'Elizabeth Grant Rey', status: 'Tardanza'},
-    {position: 7, name: 'Joaquín Espinoza Vargas', status: 'Asistencia'},
-    {position: 8, name: 'Piero Ramírez Farfán', status: 'Asistencia'},
-    {position: 9, name: 'Jack Taehyung Kim', status: 'Falta'},
-    {position: 10, name: 'Carly Rae Jepsen Perez', status: 'Asistencia'},
-  ];
+  form = new FormGroup({
+    filtrazo: new FormControl(null, {
+      validators: [
+        Validators.required
+      ]
+    })
+  });
 
+  constructor(
+    private registroAsistenciaService: RegistroasistenciaService,
+    public datePipe: DatePipe,
+    private activatedRoute: ActivatedRoute
+  ){}
+
+  ngOnInit(): void{
+    this.getRegistros();
+  }
+
+  getRegistros(){
+    const params = this.activatedRoute.snapshot.params;
+    console.log(params['id']);
+    const grado= params['id'];
+    
+    this.registroAsistenciaService.getRegistrosByGrado(params['id']).subscribe((data:any) => {
+      this.dataSource = new MatTableDataSource(data["dato"]);
+    })
+  }
+  
+  applyDateFilter(){
+    console.log(this.form.value.filtrazo);
+    console.log(this.dataSource.data);
+    console.log(this.dataSource.data[1]);
+
+    const dato = this.formatoInput()
+    console.log(dato);
+    console.log(dato.getDate());
+    
+    return this.dataSource.data = this.dataSource.data.filter(e=> new Date(e.fecha).getFullYear()  === dato.getFullYear() && new Date(e.fecha).getMonth()  === dato.getMonth() && new Date(e.fecha).getDate()  === dato.getDate());
+  }
+
+  formatoInput(){
+    var datazo : Date= this.form.value.filtrazo!;
+    const ano = datazo.getFullYear(); 
+    const mes = datazo.getMonth(); 
+    const dia = datazo.getDate() - 1;
+    
+    const final = new Date(ano,mes,dia);
+    console.log(final);
+    
+    return final;
+  }
+
+  clearFilters(){
+    this.getRegistros();
+    this.dataSource.filter = '';
+ }
+ 
 }

@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
+=======
+  //apiBase:'https://registro-asistencia.herokuapp.com/'
+>>>>>>> 43d80753cccbafc3f6e13e51ea6f22af73478223
   apiBase: 'https://registro-asistencia.herokuapp.com/'
 };
 

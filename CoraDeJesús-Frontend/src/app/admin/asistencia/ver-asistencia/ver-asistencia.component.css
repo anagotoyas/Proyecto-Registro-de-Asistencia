@@ -155,3 +155,38 @@ h3{
 .fa{
     display: inline-block;
 }
+
+#filtro{
+    margin: 0 20px;
+}
+
+.button2:hover{
+    border-radius: 10px;
+    background-color: #FFB94E;
+    width: 100%;
+    color: white;
+    font-weight: 600;
+    transition: 0.2s;
+  
+  }
+  
+
+.button2:hover#medio{
+    margin: 20px 0;
+
+}
+
+.button2:hover#medio .fas{
+    color: white !important;
+
+}
+
+.button2:hover#abajo{
+    margin-top: 20px;
+
+}
+
+.button2:hover#abajo .fas{
+    color: white !important;
+
+}

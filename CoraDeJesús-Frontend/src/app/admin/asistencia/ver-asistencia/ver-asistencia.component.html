@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="menu">
-                    <a href="admin/elegir" class="button1"><i class="far fa-calendar-check" id="iconcito" style="color: white;"></i>Registro de Asistencia</a>
-                </div>
+                    <a href="admin/elegir" class="button1"><i class="fas fa-calendar-check" id="iconcito" style="color: white;"></i>Reporte de Asistencia</a>
+                    <a href="admin/reporteAsistencia" class="button2" id="medio"><i class="fas fa-address-card" id="iconcito"></i>Registro de asistencia</a>
+                    <a href="admin/reporteFaltas" class="button2" id="abajo"><i class="fas fa-address-card" id="iconcito"></i>Reporte de faltas</a>
+                  </div>
                 <div class="footer">
                     Corazón de Jesús © 2022<br>
                     Todos los derechos reservados
@@ -12,30 +14,59 @@
             </div>
             <div class="col-md-9">
                 <div class="datos">
-                    <h1>Registro de Asistencia<h1 style="color: #767676; display: inline; font-weight: 500;"> / 2° Grado</h1></h1>
+                    <h1>Reporte de Asistencia<h1 style="color: #767676; display: inline; font-weight: 500;"> / {{grado}}° Grado</h1></h1>
                     <div class="linea-subtitle"></div>
-                    <p style="font-weight: bold; margin-bottom: 2rem; font-size: 18px; display: inline;">Fecha: 
-                        <p style="display: inline; font-weight: 400; ">11 / 05 / 2022</p>
                     <div class="cajita" style="margin-top: 1rem;">
                     
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                        <form [formGroup]="form" (submit)="applyDateFilter()">
+                            <p style="font-weight: bold; margin-bottom: 2rem; font-size: 18px; display: inline;">Fecha:
+                            <mat-form-field>
+                                <input 
+                                matInput 
+                                placeholder="Elija la fecha" 
+                                [matDatepicker]="picker1"
+                                formControlName="filtrazo"
+                                required
+                                (click)="picker1.open()"
+                                >
+                                <mat-datepicker-toggle 
+                                matSuffix [for]="picker1"
+                                ></mat-datepicker-toggle>
+                                <mat-datepicker 
+                                #picker1></mat-datepicker>
+                            </mat-form-field>
+                            <button 
+                            class="button-form" 
+                            id="filtro"
+                            mat-raised-button color="accent" 
+                            (click)="applyDateFilter()"
+                            [disabled]="form.invalid">Submit</button>
+                            <button mat-raised-button color="accent" (click)="clearFilters()" type="button" [disabled]="form.invalid" id="filtro">Clear</button>
+                            </form>
 
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                        
                         <ng-container matColumnDef="position">
                           <th mat-header-cell *matHeaderCellDef style="width: 20%; text-align: center;"> Nro de Orden </th>
-                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.position}} </td>
+                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.idRegistro}} </td>
                         </ng-container>
                       
                         <!-- Name Column -->
                         <ng-container matColumnDef="name">
                           <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Estudiante </th>
-                          <td mat-cell style="text-align: center;" *matCellDef="let element"> {{element.name}} </td>
+                          <td mat-cell style="text-align: center;" *matCellDef="let element"> {{element.estudiante.nombre + ' ' + element.estudiante.apellidoPaterno + ' ' + element.estudiante.apellidoMaterno}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="status">
-                          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Estado </th>
-                          <td mat-cell style="text-align: center;" *matCellDef="let element"> {{element.status}} </td>
-                        </ng-container>                          
-                      
+                            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Estado </th>
+                            <td mat-cell style="text-align: center;" *matCellDef="let element"> {{element.estado.nombreEstado}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="date">
+                            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha </th>
+                            <td mat-cell style="text-align: center;" *matCellDef="let element"> {{element.fecha |  date: 'dd/MM/yyyy'}} </td>
+                          </ng-container>                          
+                          
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                       </table>

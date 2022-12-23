@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ElegirAsistenciaComponent {
 
+  mover(idGrado:number){
+    window.location.replace(`admin/${idGrado}/asistencia`);
+  }
+
 }

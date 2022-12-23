@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="menu">
-                  <a href="admin/elegir" class="button1"><i class="fas fa-calendar-check" id="iconcito" style="color: white;"></i>Registro de Asistencia</a>
-                  <a href="admin/reporteAsistencia" class="button2" id="medio"><i class="fas fa-address-card" id="iconcito"></i>Reporte de asistencia</a>
+                  <a href="admin/elegir" class="button1"><i class="fas fa-calendar-check" id="iconcito" style="color: white;"></i>Reporte de Asistencia</a>
+                  <a href="admin/reporteAsistencia" class="button2" id="medio"><i class="fas fa-address-card" id="iconcito"></i>Registro de asistencia</a>
                   <a href="admin/reporteFaltas" class="button2" id="abajo"><i class="fas fa-address-card" id="iconcito"></i>Reporte de faltas</a>
                 </div>
                 <div class="footer">
@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-9">
                 <div class="datos">
-                    <h1>Registro de Asistencia</h1>
+                    <h1>Reporte de Asistencia</h1>
                     <div class="linea-subtitle"></div>
                     <div style="display: flex;
                     align-items: center;">
@@ -24,7 +24,7 @@
                  </div>
                  <p style="font-weight: bold; margin-top: 1rem; margin-bottom: 1.5rem;">Seleccionar grado: </p>
                     <div class="box">
-                        <div class="cardcita">
+                        <div class="cardcita" (click)="mover(1)">
                             <div class="logazo">
                                 <i class="far fa-bookmark"></i>
                             </div>
@@ -32,8 +32,8 @@
                                 <h3>1° grado</h3>
                             </div>
                         </div>
-                        <div class="cardcita">
-                            <a class="link" href="/admin/elegir/asistencia">
+                        <div class="cardcita" (click)="mover(2)">
+                            <a class="link">
                             <div class="logazo">
                                 <i class="far fa-bookmark"></i>
                             </div>
@@ -41,7 +41,7 @@
                                 <h3>2° grado</h3>
                             </div></a>
                         </div>
-                        <div class="cardcita">
+                        <div class="cardcita" (click)="mover(3)">
                             <div class="logazo">
                                 <i class="far fa-bookmark"></i>
                             </div>
@@ -49,12 +49,28 @@
                                 <h3>3° grado</h3>
                             </div>
                         </div>
-                        <div class="cardcita">
+                        <div class="cardcita" (click)="mover(4)">
                             <div class="logazo">
                                 <i class="far fa-bookmark"></i>
                             </div>
                             <div class="contenido">
                                 <h3>4° grado</h3>
+                            </div>
+                        </div>
+                        <div class="cardcita" (click)="mover(5)">
+                            <div class="logazo">
+                                <i class="far fa-bookmark"></i>
+                            </div>
+                            <div class="contenido">
+                                <h3>5° grado</h3>
+                            </div>
+                        </div>
+                        <div class="cardcita" (click)="mover(6)">
+                            <div class="logazo">
+                                <i class="far fa-bookmark"></i>
+                            </div>
+                            <div class="contenido">
+                                <h3>6° grado</h3>
                             </div>
                         </div>
                     </div>

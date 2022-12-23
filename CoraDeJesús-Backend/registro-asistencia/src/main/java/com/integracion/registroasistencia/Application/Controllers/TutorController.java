@@ -10,17 +10,24 @@ import com.integracion.registroasistencia.Domain.Entities.RegistroAsistencia;
 import com.integracion.registroasistencia.Domain.Entities.Tutor;
 import com.integracion.registroasistencia.Domain.Repositories.EstudianteRepository;
 import com.integracion.registroasistencia.Domain.Repositories.GradoRepository;
+import com.integracion.registroasistencia.Domain.Repositories.RegistroAsistenciaRepository;
 import com.integracion.registroasistencia.Domain.Repositories.TutorRepository;
 import com.integracion.registroasistencia.Domain.Services.CorreoService;
 import com.integracion.registroasistencia.Domain.Services.TutorService;
 import com.integracion.registroasistencia.Utils.WrapperResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/tutores")
@@ -32,6 +39,7 @@ public class TutorController {
 
     @Autowired
     private GradoRepository gradoRepository;
+
 
     @Autowired
     private TutorRepository tutorRepository;
@@ -180,5 +188,14 @@ public class TutorController {
         return tutorRepository.save(tutorN);
 
     }
+
+    @GetMapping("/{idUsuario}/grado")
+    public Set<Grado> obtenerGradosPorTutor(@PathVariable Integer idUsuario){
+        Tutor tutor = tutorService.obtenerTutorPorId(idUsuario);
+        return tutor.getTutor_grado();
+    }
+
+
+
 
 }

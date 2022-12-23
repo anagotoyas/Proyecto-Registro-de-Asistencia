@@ -8,12 +8,16 @@ import { ElegirAsistenciaComponent } from './asistencia/elegir-asistencia/elegir
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReporteAsistenciasComponent } from './reporte-asistencias/reporte-asistencias.component';
 import { ReportefaltasComponent } from './reportefaltas/reportefaltas.component';
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {MatButtonModule} from "@angular/material/button";
 import { HttpClientModule } from '@angular/common/http';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import { VerEstudiantesComponent } from './reporte-asistencias/ver-estudiantes/ver-estudiantes.component';
+import { EstudianteComponent } from './reporte-asistencias/ver-estudiantes/estudiante/estudiante.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     VerAsistenciaComponent,
     ElegirAsistenciaComponent,
     ReporteAsistenciasComponent,
-    ReportefaltasComponent
+    ReportefaltasComponent,
+    VerEstudiantesComponent,
+    EstudianteComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +39,10 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     NgxChartsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatInputModule
   ]
 })
 export class AdminModule { }

@@ -1,0 +1,118 @@
+
+<body>
+    <section>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="menu">
+            <a href="admin/elegir" class="button2"><i class="fas fa-calendar-check" id="iconcito"></i>Registro de Asistencia</a>
+            <a href="admin/reporteAsistencia" class="button1" id="medio"><i class="fas fa-address-card" id="iconcito"  style="color: white;"></i>Reporte de asistencia</a>
+            <a href="admin/reporteFaltas" class="button2" id="abajo"><i class="fas fa-address-card" id="iconcito"></i>Reporte de faltas</a>
+          </div>
+          <div class="footer">
+            Corazón de Jesús © 2022<br>
+            Todos los derechos reservados
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="datos">
+            <h1><a style="text-decoration: none;" href="./admin/reporteAsistencia">Reportes de Asistencia</a><h1 style="color: #767676; display: inline; font-weight: 500;"> / {{yeargrado}} / {{grado}}</h1></h1>
+            <div class="linea-subtitle"></div>
+            <div style="display: flex;
+                        align-items: center;">
+             
+              
+            </div>
+            <div class="cajita">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+                  
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="idUsuario">
+                      <th mat-header-cell *matHeaderCellDef style="width: 30%;"> Nro de Orden </th>
+                      <td mat-cell *matCellDef="let element"> {{element.idUsuario}} </td>
+                    </ng-container>
+                  
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="Estudiante">
+                      <th mat-header-cell *matHeaderCellDef> Estudiante </th>
+                      <td mat-cell *matCellDef="let element"> {{element.apellidoPaterno}} {{element.apellidoMaterno}}, {{element.nombre}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="1b">
+                        <th mat-header-cell *matHeaderCellDef>1 B</th>
+                        <td mat-cell *matCellDef="let element">
+                          <button
+                            id="ver-boton" 
+                            mat-icon-button
+                            color="primary"
+                            (click)="consulta(element.idUsuario, bim)"
+                          >
+                          <i class="fa-sharp fa-solid fa-eye"></i>
+                          </button>
+                          
+                        </td>
+                        
+                      </ng-container>
+
+                      <ng-container matColumnDef="2b">
+                        <th mat-header-cell *matHeaderCellDef>2 B</th>
+                        <td mat-cell *matCellDef="let element">
+                          <button
+                            id="ver-boton" 
+                            mat-icon-button
+                            color="primary"
+                            (click)="consulta(element.idUsuario, bim2)"
+                          >
+                          <i class="fa-sharp fa-solid fa-eye"></i>
+                          </button>
+                          
+                        </td>
+                        
+                      </ng-container>
+
+                      <ng-container matColumnDef="3b">
+                        <th mat-header-cell *matHeaderCellDef>3 B</th>
+                        <td mat-cell *matCellDef="let element">
+                          <button
+                            id="ver-boton" 
+                            mat-icon-button
+                            color="primary"
+                            (click)="consulta(element.idUsuario, bim3)"
+                          >
+                          <i class="fa-solid fa-eye"></i>
+                          </button>
+                          
+                        </td>
+                        
+                      </ng-container>
+                      <ng-container matColumnDef="4b">
+                        <th mat-header-cell *matHeaderCellDef>4 B</th>
+                        <td mat-cell *matCellDef="let element">
+                          <button
+                            id="ver-boton" 
+                            mat-icon-button
+                            color="primary"
+                            (click)="consulta(element.idUsuario, bim4)"
+                          >
+                          <i class="fa-solid fa-eye"></i>
+                          </button>
+                          
+                        </td>
+                        
+                      </ng-container>
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                  </table>
+                </div>
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    </body>
+    

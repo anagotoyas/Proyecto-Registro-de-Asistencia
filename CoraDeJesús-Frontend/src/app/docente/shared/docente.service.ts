@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Tutor } from './tutor';
+import { Estudiante } from 'src/app/estudiante/shared/Estudiante.model';
+import { Grado } from './grado';
+import { RegistroAsistencia } from './registro_asistencia';
 
 @Injectable({
   providedIn: 'root'
@@ -8,25 +12,24 @@ import { HttpClient } from '@angular/common/http';
 export class DocenteService {
   private apiBase: string = environment.apiBase;
 
+  private body:string
   constructor(private http: HttpClient) { }
 
-  create(resena: Resena) {
-    return this.http.post(`${this.apiBase}/resenas`,resena );
+  obtenerTutorPorId(id: any) {
+    return this.http.get<Tutor>(`${this.apiBase}/tutores/${id}`);
+  }
+  
+  listarEstudPorGrado(id: any){
+    return this.http.get<Estudiante[]>(`${this.apiBase}/estudiantes/grado/${id}`);
   }
 
-  getResenaPorIdHistoria(id: number){
-    return this.http.get<Resena[]>(`${this.apiBase}/resenas/buscarPorIdHistoria?historia=${id}`)
+  getGradosPorTutor(id: any){
+    return this.http.get<Grado[]>(`${this.apiBase}/tutores/${id}/grado`);
   }
 
-  deleteResena(idResena: number) {
-    return this.http.delete<Resena>(`${this.apiBase}/resenas/${idResena}`)
+  enviarCorreo(idRegistro: any, idEstudiante:any){
+    return this.http.post<RegistroAsistencia>(`${this.apiBase}/estudiantes/notificar/${idRegistro}/${idEstudiante}`, this.body);
   }
 
-  editResena(resena: Resena) {
-    return this.http.put(`${this.apiBase}/resenas`,resena );
-  }
-
-  getResenaPorId(id: number){
-    return this.http.get<Resena>(`${this.apiBase}/resenas/${id}`)
-  }
+  
 }

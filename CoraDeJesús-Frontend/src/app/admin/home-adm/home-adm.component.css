@@ -152,6 +152,6 @@ h3{
     transition: 0.2s;
 }
 
-.button2:hover .far{ 
+.button2:hover .fas{ 
     color: white !important;
 }

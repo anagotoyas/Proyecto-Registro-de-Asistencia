@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "04de6934-0aeb-4223-8698-7fc9ace871dc",
+		"_postman_id": "1e5b705f-6cbc-4226-8e10-725fcc332bc4",
 		"name": "COLEGIO CORAZÓN DE JESUS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17666881"
+		"_exporter_id": "17951869"
 	},
 	"item": [
 		{
@@ -198,13 +198,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/docentes/1",
+							"raw": "{{base_url}}/tutores/8",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"docentes",
-								"1"
+								"tutores",
+								"8"
 							]
 						}
 					},
@@ -217,7 +217,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"dni\": \"13296542\",\r\n    \"nombre\": \"Juanita\",\r\n    \"apellidoPaterno\": \"Mendoza\",\r\n    \"apellidoMaterno\": \"Chávez\",\r\n    \"sexo\": \"Femenino\",\r\n    \"clave\": \"sistemas\",\r\n    \"rol\": {\r\n        \"idRol\": 3,\r\n        \"nombreRol\": \"Docente\"\r\n    },\r\n    \"fechaNacimiento\": \"03/11/2003\",\r\n    \"fechaContratacion\": \"03/11/2023\"\r\n}",
+							"raw": "{\r\n    \"idUsuario\": 2,\r\n        \"dni\": \"14206579\",\r\n        \"nombre\": \"Jose\",\r\n        \"apellidoPaterno\": \"Mendoza\",\r\n        \"apellidoMaterno\": \"Chávez\",\r\n        \"sexo\": \"Masculino\",\r\n        \"clave\": \"sistemas\",\r\n        \"rol\": {\r\n            \"idRol\": 2\r\n        }\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -225,12 +225,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/docentes",
+							"raw": "{{base_url}}/tutores",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"docentes"
+								"tutores"
 							]
 						}
 					},
@@ -249,6 +249,45 @@
 							"path": [
 								"docentes",
 								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Asignar grado",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tutores/2/grado/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tutores",
+								"2",
+								"grado",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Grados por IdTutor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tutores/8/grado",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tutores",
+								"8",
+								"grado"
 							]
 						}
 					},
@@ -415,13 +454,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/estudiantes/5",
+							"raw": "{{base_url}}/estudiantes/226",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"estudiantes",
-								"5"
+								"226"
 							]
 						}
 					},
@@ -477,14 +516,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/estudiantes/grado/2",
+							"raw": "{{base_url}}/estudiantes/grado/13",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"estudiantes",
 								"grado",
-								"2"
+								"13"
 							]
 						}
 					},
@@ -505,6 +544,45 @@
 								"1",
 								"grado",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enviar Correo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiantes/notificar/249487/226",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes",
+								"notificar",
+								"249487",
+								"226"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enviar correo v2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/registro_asistencias/notificar/274726",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"registro_asistencias",
+								"notificar",
+								"274726"
 							]
 						}
 					},
@@ -722,14 +800,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/registro_asistencias/grado/2",
+							"raw": "{{base_url}}/registro_asistencias/grado/13",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"registro_asistencias",
 								"grado",
-								"2"
+								"13"
 							]
 						}
 					},
@@ -741,14 +819,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/registro_asistencias/estudiante/1",
+							"raw": "{{base_url}}/registro_asistencias/estudiante/219",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"registro_asistencias",
 								"estudiante",
-								"1"
+								"219"
 							]
 						}
 					},
@@ -789,6 +867,25 @@
 								"1",
 								"bimestre",
 								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar incidencias por Grado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/registro_asistencias/incidencia/13",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"registro_asistencias",
+								"incidencia",
+								"13"
 							]
 						}
 					},
@@ -1114,13 +1211,30 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombreEstado\":\"Ausente\"\n}",
+							"raw": "{\n    \"nombreEstado\":\"Tardanza\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
+						"url": {
+							"raw": "{{base_url}}/estados",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Estados",
+					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
 							"raw": "{{base_url}}/estados",
 							"host": [

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ElegirAsistenciaComponent } from './elegir-asistencia/elegir-asistencia.component';
 import { HomeEstComponent } from './home-est/home-est.component';
 import { LayoutComponent } from './layout/layout.component';
 import { VerAsistenciaComponent } from './ver-asistencia/ver-asistencia.component';
@@ -20,6 +21,10 @@ const routes: Routes = [
       },
       {
         path:'asistencia',
+        component: ElegirAsistenciaComponent,
+      },
+      {
+        path:':id/registro',
         component: VerAsistenciaComponent,
       },
     ],

@@ -1,65 +1,99 @@
 <body>
-<section>
-  <div class="row">
-    <div class="col-md-3">
-      <div class="menu">
-        <a href="admin/elegir" class="button2"><i class="fas fa-calendar-check" id="iconcito"></i>Registro de Asistencia</a>
-        <a href="admin/reporteAsistencia" class="button1" id="medio"><i class="fas fa-address-card" id="iconcito"  style="color: white;"></i>Reporte de asistencia</a>
-        <a href="admin/reporteFaltas" class="button2" id="abajo"><i class="fas fa-address-card" id="iconcito"></i>Reporte de faltas</a>
-      </div>
-      <div class="footer">
-        Corazón de Jesús © 2022<br>
-        Todos los derechos reservados
-      </div>
-    </div>
-    <div class="col-md-9">
-      <div class="datos">
-        <h1>Registro de Asistencia</h1>
-        <div class="linea-subtitle"></div>
-        <div style="display: flex;
-                    align-items: center;">
-          <p style="font-weight: bold; line-height: 30px; margin: 0px;">Seleccionar la fecha: </p>
-          <input class="fecha" type="date" id="start" name="trip-start"
-                 value="2022-07-22">
+  <section>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="menu">
+          <a href="admin/elegir" class="button2"><i class="fas fa-calendar-check" id="iconcito"></i>Registro de Asistencia</a>
+          <a href="admin/reporteAsistencia" class="button1" id="medio"><i class="fas fa-address-card" id="iconcito"  style="color: white;"></i>Reporte de asistencia</a>
+          <a href="admin/reporteFaltas" class="button2" id="abajo"><i class="fas fa-address-card" id="iconcito"></i>Reporte de faltas</a>
         </div>
-        <p style="font-weight: bold; margin-top: 1rem; margin-bottom: 1.5rem;">Seleccionar grado: </p>
-        <div class="box">
-          <div class="cardcita">
-            <div class="logazo">
-              <i class="far fa-bookmark"></i>
-            </div>
-            <div class="contenido">
-              <h3>1° grado</h3>
-            </div>
-          </div>
-          <div class="cardcita">
-            <a class="link" href="/admin/elegir/asistencia">
-              <div class="logazo">
-                <i class="far fa-bookmark"></i>
-              </div>
-              <div class="contenido">
-                <h3>2° grado</h3>
-              </div></a>
-          </div>
-          <div class="cardcita">
-            <div class="logazo">
-              <i class="far fa-bookmark"></i>
-            </div>
-            <div class="contenido">
-              <h3>3° grado</h3>
-            </div>
-          </div>
-          <div class="cardcita">
-            <div class="logazo">
-              <i class="far fa-bookmark"></i>
-            </div>
-            <div class="contenido">
-              <h3>4° grado</h3>
-            </div>
-          </div>
+        <div class="footer">
+          Corazón de Jesús © 2022<br>
+          Todos los derechos reservados
         </div>
       </div>
+      <div class="col-md-9">
+        <div class="datos">
+          <h1>Reportes de Asistencia</h1>
+          <div class="linea-subtitle"></div>
+          <div style="display: flex;
+                      align-items: center;">
+            <div>
+              <p style="font-weight: bold; line-height: 30px; margin: 0px;">Seleccionar el año: </p>
+  
+            
+            <select class="form-control" #mySelect id="years"  (change)="cambio(mySelect.value)">
+              <option disabled selected value> -- Escoja un año -- </option>
+              <option value="2018">2018</option>
+              <option value="2019" >2019</option>
+              <option value="2020">2020</option>
+              
+            </select>
+            </div>
+            
+          </div>
+          
+          <p style="font-weight: bold; margin-top: 1rem; margin-bottom: 1.5rem;">Seleccionar grado: </p>
+          <div class="box">
+            
+            <div class="cardcita">
+              <a class="link" (click)="open(1)">
+                <div class="logazo">
+                  <i class="far fa-bookmark"></i>
+                </div>
+                <div class="contenido">
+                  <h3>1° grado</h3>
+                </div></a>
+            </div>
+            <div class="cardcita">
+              <a class="link" (click)="open(2)">
+                <div class="logazo">
+                  <i class="far fa-bookmark"></i>
+                </div>
+                <div class="contenido">
+                  <h3>2° grado</h3>
+                </div></a>
+            </div>
+            <div class="cardcita">
+              <a class="link" (click)="open(3)">
+                <div class="logazo">
+                  <i class="far fa-bookmark"></i>
+                </div>
+                <div class="contenido">
+                  <h3>3° grado</h3>
+                </div></a>
+            </div>
+            <div class="cardcita">
+              <a class="link" (click)="open(4)">
+                <div class="logazo">
+                  <i class="far fa-bookmark"></i>
+                </div>
+                <div class="contenido">
+                  <h3>4° grado</h3>
+                </div></a>
+            </div>
+            <div class="cardcita">
+              <a class="link" (click)="open(5)">
+                <div class="logazo">
+                  <i class="far fa-bookmark"></i>
+                </div>
+                <div class="contenido">
+                  <h3>5° grado</h3>
+                </div></a>
+            </div>
+            <div class="cardcita">
+              <a class="link" (click)="open(6)">
+                <div class="logazo">
+                  <i class="far fa-bookmark"></i>
+                </div>
+                <div class="contenido">
+                  <h3>6° grado</h3>
+                </div></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
-</body>
+  </section>
+  </body>
+  

@@ -1,4 +1,3 @@
-import { Rol } from "src/app/docente/shared/rol";
 
 export class Estudiante {
     "idUsuario": number;
@@ -8,7 +7,7 @@ export class Estudiante {
     "apellidoMaterno":string;
     "sexo": string;
     "clave": string;
-    "rol": Rol
+    "rol": Object;
     "direccion": string;
     "correo": string;
     "telefono": string;
