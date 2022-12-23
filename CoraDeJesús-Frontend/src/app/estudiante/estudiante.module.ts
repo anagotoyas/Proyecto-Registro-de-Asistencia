@@ -8,6 +8,10 @@ import { VerAsistenciaComponent } from './ver-asistencia/ver-asistencia.componen
 import { VerDatosComponent } from './ver-datos/ver-datos.component';
 import { MatTableModule } from '@angular/material/table';
 import { ElegirAsistenciaComponent } from './elegir-asistencia/elegir-asistencia.component';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { MatOption, MatOptionModule } from '@angular/material/core';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -21,7 +25,11 @@ import { ElegirAsistenciaComponent } from './elegir-asistencia/elegir-asistencia
   imports: [
     CommonModule,
     EstudianteRoutingModule,
-    MatTableModule
-  ]
+    MatTableModule,
+    MatSelectModule,
+    MatOptionModule
+    
+  ],
+  
 })
 export class EstudianteModule { }

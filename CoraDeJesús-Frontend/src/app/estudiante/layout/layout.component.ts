@@ -13,7 +13,7 @@ export class LayoutComponent implements OnInit {
   estudiante:Estudiante;
 
   nombres:string
-  idUsuario=Number(sessionStorage.getItem('idUsuario'))
+  idUsuario=Number(sessionStorage.getItem('id'))
   
   constructor(
     private router:Router,
@@ -30,6 +30,8 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit():void{
     this.obtenerDatos();
+    console.log(sessionStorage.getItem('id'))
+    
   }
 
   obtenerDatos(){

@@ -33,6 +33,7 @@ export class ReporteAsistenciasComponent implements OnInit{
       lista =lista.filter((x: { year: { year: Number; }; }) => x.year.year==this.year)
       lista=lista.filter((x:{nombreGrado:String})=> x.nombreGrado.slice(5,6)==this.numero)
       this.grado=lista[0].idGrado
+      console.log()
       localStorage.setItem('idGrado', this.grado)
       this.router.navigate([`/admin/reporteAsistencia/ver/${this.grado}`]);
      

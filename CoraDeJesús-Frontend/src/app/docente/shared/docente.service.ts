@@ -5,6 +5,7 @@ import { Tutor } from './tutor';
 import { Estudiante } from 'src/app/estudiante/shared/Estudiante.model';
 import { Grado } from './grado';
 import { RegistroAsistencia } from './registro_asistencia';
+import { Usuario } from './usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,9 @@ export class DocenteService {
 
   obtenerTutorPorId(id: any) {
     return this.http.get<Tutor>(`${this.apiBase}/tutores/${id}`);
+  }
+  getUsuarioPorId(idUsuario:any){
+    return this.http.get<Usuario>(`${this.apiBase}/usuarios/${idUsuario}`);
   }
   
   listarEstudPorGrado(id: any){

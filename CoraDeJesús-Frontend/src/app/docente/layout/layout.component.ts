@@ -11,16 +11,28 @@ export class LayoutComponent {
   constructor(public docenteService: DocenteService) { }
 
   nombre: any;
+ 
+  idUsuario=Number(sessionStorage.getItem('idUsuario'))
 
   ngOnInit(): void {
 
     const id = localStorage.getItem('idTutor');
 
-    this.docenteService.obtenerTutorPorId(id).subscribe((data:any) => {
+    this.obtenerDatos(sessionStorage.getItem('idUsuario'));
+  }
+
+  obtenerDatos(id:any){
+    this.docenteService.getUsuarioPorId(id).subscribe((data:any) => {
+      console.log(this.idUsuario);
       
-      this.nombre = data['dato'].nombre
+      
+      this.nombre = data.dato.nombre + ' ' + data.dato.apellidoPaterno + ' ' + data.dato.apellidoMaterno    
+      
+      
       
     })
   }
+
+  
 
 }

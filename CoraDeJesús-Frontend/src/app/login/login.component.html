@@ -18,6 +18,7 @@
                 <input placeholder="Ingrese su contraseña" type="password" class="form-control" id="password" [(ngModel)]="usuario.clave">
             </div>
             <div class="footer-form">
+                <p id="error" >{{msg}}</p>
                 <a href="#">He olvidado mi contraseña.</a>
                 <button (click)="logIn()">
                     Entrar

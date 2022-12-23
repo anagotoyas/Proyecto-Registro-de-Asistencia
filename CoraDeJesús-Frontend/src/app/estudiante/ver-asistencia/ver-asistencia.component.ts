@@ -22,6 +22,8 @@ export class VerAsistenciaComponent implements OnInit{
   idUsuario=Number(sessionStorage.getItem('idUsuario'))
   params = this.activatedRoute.snapshot.params;
   bimestre = this.params['id'];
+  bimN:any
+  year:any
 
   constructor(
     private asistenciaService: AsistenciaService,
@@ -32,14 +34,25 @@ export class VerAsistenciaComponent implements OnInit{
   ngOnInit(): void {
       this.getRegistros();
       this.obtenerDatos();
+      this.getBimestre()
   }
 
 
 
   getRegistros(){
-    this.asistenciaService.getRegistrosByEstudAndBim(this.idUsuario,this.bimestre).subscribe((data:any) => {
-      this.dataSource = new MatTableDataSource(data["dato"]);
-      console.log(this.dataSource.data);
+    this.estudianteService.getRegistrosEstudianteByGradoBim(this.idUsuario,Number(sessionStorage.getItem('grado')),this.bimestre).subscribe((data:any) => {
+      console.log('omg')
+      this.dataSource = new MatTableDataSource(data);
+      console.log(data);
+    })
+  }
+
+  getBimestre(){
+    this.estudianteService.getBimestre(this.bimestre).subscribe((data:any) => {
+      console.log(data.dato)
+      this.bimN=data.dato.nombreBimestre.slice(6,7)
+      this.year=data.dato.year.year
+
     })
   }
 
@@ -54,5 +67,22 @@ export class VerAsistenciaComponent implements OnInit{
       
     })
   }
+
+  capitalizeFirstLetter(letra:string) {
+    
+    
+    var cambio;
+    cambio=letra.charAt(0).toUpperCase() + letra.slice(1);
+   
+      
+    
+    return cambio;
+
+
+    
+
+
+  }
+  
 
 }
