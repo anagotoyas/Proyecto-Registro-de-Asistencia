@@ -16,6 +16,8 @@ import {MatButtonModule} from "@angular/material/button";
 import { HttpClientModule } from '@angular/common/http';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
+import { VerEstudiantesComponent } from './reporte-asistencias/ver-estudiantes/ver-estudiantes.component';
+import { EstudianteComponent } from './reporte-asistencias/ver-estudiantes/estudiante/estudiante.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {MatInputModule} from '@angular/material/input';
     VerAsistenciaComponent,
     ElegirAsistenciaComponent,
     ReporteAsistenciasComponent,
-    ReportefaltasComponent
+    ReportefaltasComponent,
+    VerEstudiantesComponent,
+    EstudianteComponent
   ],
   imports: [
     CommonModule,

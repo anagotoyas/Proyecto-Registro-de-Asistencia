@@ -26,24 +26,27 @@ export class ReportefaltasComponent implements OnInit{
   ];
 
   bimestres= [
-    {value: '2018-1', viewValue: '2018-1'},
-    {value: '2018-3', viewValue: '2018-2'},
-    {value: '2018-4', viewValue: '2018-3'},
-    {value: '2018-5', viewValue: '2018-4'},
-    {value: '2019-1', viewValue: '2019-1'},
-    {value: '2019-3', viewValue: '2019-2'},
-    {value: '2019-4', viewValue: '2019-3'},
-    {value: '2019-5', viewValue: '2019-4'},
-    {value: '2020-1', viewValue: '2020-1'},
-    {value: '2020-2', viewValue: '2020-2'},
-    {value: '2020-3', viewValue: '2020-3'},
+    {value: '2018-01', viewValue: '2018-01'},
+    {value: '2018-03', viewValue: '2018-02'},
+    {value: '2018-04', viewValue: '2018-03'},
+    {value: '2018-05', viewValue: '2018-04'},
+    {value: '2019-01', viewValue: '2019-01'},
+    {value: '2019-03', viewValue: '2019-02'},
+    {value: '2019-04', viewValue: '2019-03'},
+    {value: '2019-05', viewValue: '2019-04'},
+    {value: '2020-01', viewValue: '2020-01'},
+    {value: '2020-02', viewValue: '2020-02'},
+    {value: '2020-03', viewValue: '2020-03'},
   ];
 
   ngOnInit():void{
+    console.log('a')
     this.generarReporte();
+    
 
   }
   generarReporte(){
+    console.log('generar reporte')
     console.log(this.bimestreValue, this.gradoValue)
     this.adminService.getFaltas(this.bimestreValue, this.gradoValue).subscribe(
       (data: any)=>{
