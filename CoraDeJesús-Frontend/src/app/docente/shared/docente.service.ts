@@ -17,22 +17,22 @@ export class DocenteService {
   constructor(private http: HttpClient) { }
 
   obtenerTutorPorId(id: any) {
-    return this.http.get<Tutor>(`${this.apiBase}/tutores/${id}`);
+    return this.http.get<Tutor>(`${this.apiBase}tutores/${id}`);
   }
   getUsuarioPorId(idUsuario:any){
-    return this.http.get<Usuario>(`${this.apiBase}/usuarios/${idUsuario}`);
+    return this.http.get<Usuario>(`${this.apiBase}usuarios/${idUsuario}`);
   }
   
   listarEstudPorGrado(id: any){
-    return this.http.get<Estudiante[]>(`${this.apiBase}/estudiantes/grado/${id}`);
+    return this.http.get<Estudiante[]>(`${this.apiBase}estudiantes/grado/${id}`);
   }
 
   getGradosPorTutor(id: any){
-    return this.http.get<Grado[]>(`${this.apiBase}/tutores/${id}/grado`);
+    return this.http.get<Grado[]>(`${this.apiBase}tutores/${id}/grado`);
   }
 
   enviarCorreo(idRegistro: any, idEstudiante:any){
-    return this.http.post<RegistroAsistencia>(`${this.apiBase}/estudiantes/notificar/${idRegistro}/${idEstudiante}`, this.body);
+    return this.http.post<RegistroAsistencia>(`${this.apiBase}estudiantes/notificar/${idRegistro}/${idEstudiante}`, this.body);
   }
 
   

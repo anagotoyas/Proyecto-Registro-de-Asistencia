@@ -402,9 +402,7 @@ public class RegistroAsistenciaController {
 
         try {
 
-            Grado gN = gradoRepository.findById(idGrado).get();
-
-            List<RegistroAsistencia> registroAsistencia = registroAsistenciaService.obtenerIncidenciasPorGrado(gN);
+            List<RegistroAsistencia> registroAsistencia = registroAsistenciaService.obtenerIncidenciasPorGrado(idGrado);
 
             respuesta.setMensaje("Incidencias encontradas con éxito.");
             respuesta.setSatisfactorio(true);
@@ -415,7 +413,7 @@ public class RegistroAsistenciaController {
 
         } catch (Exception e) {
 
-            respuesta.setMensaje("failed");
+            respuesta.setMensaje("failed" + e.getMessage());
             respuesta.setSatisfactorio(false);
             respuesta.setCodigo("400");
 

@@ -20,6 +20,10 @@ html,body{
     padding: 30px 100px;
 }
 
+.button2:hover .fas{ 
+    color: white !important;
+}
+
 .menu{
     background-color: white;
     border-radius: 10px;

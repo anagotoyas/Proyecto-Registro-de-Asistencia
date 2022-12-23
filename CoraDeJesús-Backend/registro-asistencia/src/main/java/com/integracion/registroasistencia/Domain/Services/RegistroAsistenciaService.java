@@ -88,17 +88,11 @@ public class RegistroAsistenciaService {
 
     }
 
-    public List<RegistroAsistencia> obtenerIncidenciasPorGrado(Grado grado){
+    public List<RegistroAsistencia> obtenerIncidenciasPorGrado(Integer idGrado){
 
-        List<RegistroAsistencia> todos = registroAsistenciaRepository.findAll();
-        List<RegistroAsistencia> porGrado = todos.stream().filter(
-                a -> a.getEstudiante().getRegistrogrado().contains(grado)).collect(Collectors.toList());
-        List<RegistroAsistencia> soloFaltas = porGrado.stream().filter(
-                a -> a.getEstado().getIdEstado().equals(3)).collect(Collectors.toList());
-        List<RegistroAsistencia> conTardanza = porGrado.stream().filter(
-                a -> a.getEstado().getIdEstado().equals(2)).collect(Collectors.toList());
+        List<RegistroAsistencia> soloFaltas = registroAsistenciaRepository.getFaltas(idGrado);
 
-        return Stream.concat(soloFaltas.stream(), conTardanza.stream()).collect(Collectors.toList());
+        return soloFaltas;
 
     }
 

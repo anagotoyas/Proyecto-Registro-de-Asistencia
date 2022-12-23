@@ -23,6 +23,10 @@ html,body{
     
 }
 
+.button2:hover .fas{ 
+    color: white !important;
+}
+
 .footer{
     background-color: white;
     border-radius: 10px;

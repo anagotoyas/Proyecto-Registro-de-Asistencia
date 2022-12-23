@@ -26,4 +26,5 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Integer>
 
     @Query(value ="SELECT * FROM  get_estudiantes_incidentes_by_fecha_grado(:date, :grado)" ,nativeQuery = true)
     List<Object> estudianteincidenteFechaGrado(@Param("date") Date fecha, @Param("grado") Integer grado);
+
 }

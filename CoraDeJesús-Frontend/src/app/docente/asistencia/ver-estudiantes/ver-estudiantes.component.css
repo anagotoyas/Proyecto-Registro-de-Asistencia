@@ -22,6 +22,10 @@ table {
     
 }
 
+.button2:hover .fas{ 
+    color: white !important;
+}
+
 .cajita {
     padding: 15px 25px 25px 25px;
 }

@@ -38,6 +38,8 @@ public interface RegistroAsistenciaRepository extends JpaRepository<RegistroAsis
     @Query(value = "SELECT  * FROM  get_asistencias_by_fechas_bimestres(:indice, :fecha, :bimestre)",nativeQuery = true)
     List<Object> getRegistroAsistenciaByFechaAndBimestreIndice( @Param("indice")Integer indice,@Param("fecha")  Date fecha,@Param("bimestre") Integer bimestre);
 
+    @Query(value = "SELECT * from registros_asistencias, estudiantes, registrogrado where registros_asistencias.registro_estado = 3 and registros_asistencias.registro_estudiante=estudiantes.id_usuario and registrogrado.id_usuario=estudiantes.id_usuario and registrogrado.id_grado = :idGrado", nativeQuery = true)
+    List<RegistroAsistencia> getFaltas(@Param("idGrado") Integer idGrado);
 
 
 }

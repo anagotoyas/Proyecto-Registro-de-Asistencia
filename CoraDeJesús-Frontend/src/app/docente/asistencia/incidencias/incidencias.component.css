@@ -164,6 +164,10 @@ h3{
     color: white !important;
 }
 
+.button2:hover .fas{ 
+    color: white !important;
+}
+
 .guardar{
 
     color: white;
