@@ -1,5 +1,7 @@
 package com.integracion.registroasistencia.Application.Controllers;
 
+import com.integracion.registroasistencia.Application.Dto.Estudiante.EntradaRegistroAsitenciaFecchas;
+import com.integracion.registroasistencia.Application.Dto.Estudiante.RespuestaListEstudiante;
 import com.integracion.registroasistencia.Application.Dto.RegistroAsistencia.RespuestaListRegistroAsistencia;
 import com.integracion.registroasistencia.Application.Dto.RegistroAsistencia.RespuestaRegistroAsistencia;
 import com.integracion.registroasistencia.Application.Dto.Respuestas.Respuesta;
@@ -369,18 +371,55 @@ public class RegistroAsistenciaController {
             return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
         }
     }
+    @PutMapping("Fechas/Bimestre")
+    public ResponseEntity<Object> getRegistroAsistenciaByFechaAndBimestreIndice(@RequestBody EntradaRegistroAsitenciaFecchas entradaRegistroAsitenciaFecchas){
+        RespuestaListEstudiante respuesta= new RespuestaListEstudiante();
+        try {
+            Object estudianteNew = registroAsistenciaService.getRegistroAsistenciaByFechaAndBimestreIndice(
+                    entradaRegistroAsitenciaFecchas.getPagina()
+                    ,entradaRegistroAsitenciaFecchas.getFecha()
+                    ,entradaRegistroAsitenciaFecchas.getGrado());
 
+            respuesta.setMensaje("Estudiante creado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+//            respuesta.setData(estudianteNew);
 
+            return new ResponseEntity<>(estudianteNew, HttpStatus.OK);
+        } catch (Exception e){
+            respuesta.setMensaje("failed"+e);
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
 
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
 
+    @GetMapping("Grado/{idGrado}/Estudiante/{idEstudiante}/Bimestre/{idBimestre}")
+    public ResponseEntity<Object> ggetRegistroLisByEstudeintesYearGrado(
+            @PathVariable("idGrado") Integer grado,
+            @PathVariable("idEstudiante") Integer estudiante,
+            @PathVariable("idBimestre")Integer bimestre)
+    {
+        RespuestaListEstudiante respuesta= new RespuestaListEstudiante();
+        try {
+            Object estudianteNew = registroAsistenciaService.getRegistroLisByEstudeintesYearGrado(grado,estudiante,bimestre);
 
+            respuesta.setMensaje("Estudiante creado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+//            respuesta.setData(estudianteNew);
 
+            return new ResponseEntity<>(estudianteNew, HttpStatus.OK);
+        } catch (Exception e){
+            respuesta.setMensaje("failed"+e);
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
 
-
-
-
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
 }
-
 
 
 

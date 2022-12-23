@@ -5,6 +5,7 @@ import com.integracion.registroasistencia.Domain.Entities.Grado;
 import com.integracion.registroasistencia.Domain.Repositories.EstudianteRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,6 +58,15 @@ public class EstudianteService {
                 a -> a.getRegistrogrado().stream().anyMatch(
                         c->c.getIdGrado().equals(idGrado))).collect(Collectors.toList());
        return porGrado;
+    }
+
+    public  List<Object> estudainteByTutorYear(Integer tutor, Integer year){
+        return estudianteRepository.estudianteListByTutorYear(tutor, year);
+    }
+
+    public List<Object> estudaintesByIncidencias(Date fecha, Integer grado){
+        System.out.println(fecha);
+        return  estudianteRepository.estudianteincidenteFechaGrado(fecha,grado);
     }
 
 }

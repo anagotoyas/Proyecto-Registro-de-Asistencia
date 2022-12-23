@@ -99,4 +99,17 @@ public class RegistroAsistenciaService {
     public RegistroAsistencia obtenerRegistroAsistenciaPorIdRegistroAsistencia(Integer idRegistroAsistencia) {
         return registroAsistenciaRepository.findById(idRegistroAsistencia).orElse(new RegistroAsistencia());
     }
+    public List<Object> getRegistroAsistenciaByFechaAndBimestreIndice(Integer pagina, Date fecha, Integer bimestre){
+//        System.out.println(pagina);
+//        System.out.println(fecha);
+//        System.out.println(bimestre);
+
+        Integer indice = (pagina-1)*20;
+        return registroAsistenciaRepository.getRegistroAsistenciaByFechaAndBimestreIndice(indice,fecha,bimestre);
+    }
+
+    public List<Object> getRegistroLisByEstudeintesYearGrado(Integer grado,Integer estudiante,Integer bimestre){
+        return registroAsistenciaRepository.getRegistroListByEstudeintesYearGrado(grado,estudiante,bimestre);
+    }
+
 }

@@ -32,6 +32,11 @@ public interface RegistroAsistenciaRepository extends JpaRepository<RegistroAsis
     List<Object> getFaltasBySexto(String bimestre, int anio);
 
 
+    @Query(value = "select  * from get_asitencias_estudiante_grado(:grado , :estudiante, :bimestre)",nativeQuery = true)
+    List<Object> getRegistroListByEstudeintesYearGrado(@Param("grado") Integer grado, @Param("estudiante") Integer estudiante, @Param("bimestre") Integer bimestre);
+
+    @Query(value = "SELECT  * FROM  get_asistencias_by_fechas_bimestres(:indice, :fecha, :bimestre)",nativeQuery = true)
+    List<Object> getRegistroAsistenciaByFechaAndBimestreIndice( @Param("indice")Integer indice,@Param("fecha")  Date fecha,@Param("bimestre") Integer bimestre);
 
 
 

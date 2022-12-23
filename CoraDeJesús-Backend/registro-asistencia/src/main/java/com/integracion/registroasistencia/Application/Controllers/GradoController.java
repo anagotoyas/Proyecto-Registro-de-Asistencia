@@ -22,6 +22,7 @@ public class GradoController {
 
     private final GradoService gradoService;
 
+
     public GradoController(GradoService gradoService) {
         this.gradoService = gradoService;
     }
@@ -101,6 +102,30 @@ public class GradoController {
             return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/registroGrados/{idEstudiante}")
+    public ResponseEntity<RespuestaGradoList> obtenerGradosPorIdEstudiante(@PathVariable("idEstudiante") Integer idEstudiante) {
+        RespuestaGradoList respuesta = new RespuestaGradoList();
+        try {
+            List<Grado> grados = gradoService.obtenerGradoEstudiante(idEstudiante);
+
+            respuesta.setMensaje("Listado de grados exitoso.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+            respuesta.setData(grados);
+
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            respuesta.setMensaje("failed");
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
     @GetMapping
     public ResponseEntity<RespuestaGradoList> listarGrado() {

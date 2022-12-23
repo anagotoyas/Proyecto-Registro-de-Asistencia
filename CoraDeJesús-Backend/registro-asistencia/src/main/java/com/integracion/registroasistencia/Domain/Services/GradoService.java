@@ -46,5 +46,9 @@ public class GradoService {
         return gradoRepository.findAllByIdGrado(idGrado);
     }
 
+    public  List<Grado> obtenerGradoEstudiante(Integer idEstudiante){
+        return gradoRepository.GradosPorEstudiante(idEstudiante);
+    }
+
 
 }

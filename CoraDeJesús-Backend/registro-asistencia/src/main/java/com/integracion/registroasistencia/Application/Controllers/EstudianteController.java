@@ -1,6 +1,7 @@
 package com.integracion.registroasistencia.Application.Controllers;
 
 
+import com.integracion.registroasistencia.Application.Dto.Estudiante.EntradaIncidentes;
 import com.integracion.registroasistencia.Application.Dto.Estudiante.RespuestaEstudiante;
 import com.integracion.registroasistencia.Application.Dto.Estudiante.RespuestaListEstudiante;
 import com.integracion.registroasistencia.Application.Dto.Respuestas.Respuesta;
@@ -212,6 +213,51 @@ public class EstudianteController {
 
     }
 
+
+    @GetMapping("tutor/{idTutor}/{idYear}")
+    public ResponseEntity<Object> ListarEstudaintesByTutor(@PathVariable("idTutor") Integer idTutor,@PathVariable("idYear") Integer year){
+        RespuestaListEstudiante respuesta= new RespuestaListEstudiante();
+        try {
+            Object estudianteNew = estudianteService.estudainteByTutorYear(idTutor,year);
+
+            respuesta.setMensaje("Estudiante creado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+//            respuesta.setData(estudianteNew);
+
+            return new ResponseEntity<>(estudianteNew, HttpStatus.OK);
+        } catch (Exception e){
+            respuesta.setMensaje("failed"+e);
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping ("incidencias")
+    public ResponseEntity<Object> ListarEstudaintesByIndicencias(@RequestBody EntradaIncidentes entradaIncidentes){
+        RespuestaListEstudiante respuesta= new RespuestaListEstudiante();
+        System.out.println(entradaIncidentes.getFecha());
+        try {
+            Object estudianteNew = estudianteService.estudaintesByIncidencias(
+                    entradaIncidentes.getFecha()
+                    ,entradaIncidentes.getGrado());
+
+            respuesta.setMensaje("Estudiante creado con éxito.");
+            respuesta.setSatisfactorio(true);
+            respuesta.setCodigo("200");
+//            respuesta.setData(estudianteNew);
+
+            return new ResponseEntity<>(estudianteNew, HttpStatus.OK);
+        } catch (Exception e){
+            respuesta.setMensaje("failed"+e);
+            respuesta.setSatisfactorio(false);
+            respuesta.setCodigo("400");
+
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
+    }
 
 
 
