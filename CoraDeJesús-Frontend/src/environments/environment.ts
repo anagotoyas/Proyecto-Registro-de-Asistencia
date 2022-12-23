@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  //apiBase:'https://registro-asistencia.herokuapp.com/'
+  //apiBase: 'http://localhost:8099/campus'
   apiBase: 'https://registro-asistencia.herokuapp.com/'
 };
 

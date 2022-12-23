@@ -23,7 +23,6 @@ export class ReporteAsistenciasComponent implements OnInit{
 
   ngOnInit(): void{
     
-   
 
   }
 
@@ -40,10 +39,6 @@ export class ReporteAsistenciasComponent implements OnInit{
     })
   }
 
-  
-
-
-
   open(numero:any){
     this.numero=numero
     console.log(this.year, numero);
@@ -53,7 +48,6 @@ export class ReporteAsistenciasComponent implements OnInit{
   cambio(year:any){
     this.year=year
     sessionStorage.setItem('year', this.year)
-    
   }
 
 }

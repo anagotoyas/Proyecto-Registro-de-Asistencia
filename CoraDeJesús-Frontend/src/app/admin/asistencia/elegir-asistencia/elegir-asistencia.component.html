@@ -18,10 +18,15 @@
                     <div class="linea-subtitle"></div>
                     <div style="display: flex;
                     align-items: center;">
-                        <p style="font-weight: bold; line-height: 30px; margin: 0px;">Seleccionar la fecha: </p>
-                        <input class="fecha" type="date" id="start" name="trip-start"
-                        value="2022-07-22">
-                 </div>
+                        <p style="font-weight: bold; line-height: 30px; margin: 0px;">Seleccionar el año: </p>
+                        <select class="form-control" #mySelect id="years"  (change)="cambio(mySelect.value)">
+                            <option disabled selected value> -- Escoja un año -- </option>
+                            <option value="2018">2018</option>
+                            <option value="2019" >2019</option>
+                            <option value="2020">2020</option>
+                            
+                          </select>
+                    </div>
                  <p style="font-weight: bold; margin-top: 1rem; margin-bottom: 1.5rem;">Seleccionar grado: </p>
                     <div class="box">
                         <div class="cardcita" (click)="mover(1)">

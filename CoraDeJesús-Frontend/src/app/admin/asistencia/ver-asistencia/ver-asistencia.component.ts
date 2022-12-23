@@ -19,6 +19,8 @@ export class VerAsistenciaComponent implements OnInit{
 
   params = this.activatedRoute.snapshot.params;
   grado= this.params['id'];
+  year= sessionStorage.getItem('year')
+  yeargrado:any
 
   form = new FormGroup({
     filtrazo: new FormControl(null, {
@@ -36,6 +38,7 @@ export class VerAsistenciaComponent implements OnInit{
 
   ngOnInit(): void{
     this.getRegistros();
+    this.getInfoGrado();
   }
 
   getRegistros(){
@@ -48,6 +51,14 @@ export class VerAsistenciaComponent implements OnInit{
     })
   }
   
+  getInfoGrado(){
+    this.registroAsistenciaService.getGradoId(localStorage.getItem('idGrado')).subscribe((data:any) =>{
+      console.log(data.dato.nombreGrado.slice(5,7))
+      this.grado=data.dato.nombreGrado.slice(5,7)+' '+ 'Grado'
+      this.yeargrado=data.dato.year.year
+    });
+  }
+
   applyDateFilter(){
     console.log(this.form.value.filtrazo);
     console.log(this.dataSource.data);
@@ -55,7 +66,6 @@ export class VerAsistenciaComponent implements OnInit{
 
     const dato = this.formatoInput()
     console.log(dato);
-    console.log(dato.getDate());
     
     return this.dataSource.data = this.dataSource.data.filter(e=> new Date(e.fecha).getFullYear()  === dato.getFullYear() && new Date(e.fecha).getMonth()  === dato.getMonth() && new Date(e.fecha).getDate()  === dato.getDate());
   }
